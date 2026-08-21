@@ -9,9 +9,6 @@
   --tan-light: #D6CDBB;
   --olive: #596044;
   --rust: #8C5850;
-  --muted: #8C7E6C;
-  --placeholder-a: #E7DECE;
-  --placeholder-b: #F0E8DB;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -177,27 +174,22 @@ a:focus-visible {
   padding-bottom: 3px;
 }
 
-.placeholder-image {
+.photo {
   aspect-ratio: 4 / 5;
-  background: repeating-linear-gradient(135deg, var(--placeholder-a) 0 9px, var(--placeholder-b) 9px 18px);
   border: 1px solid var(--tan);
-  display: flex;
-  align-items: flex-start;
-  padding: 22px;
+  overflow: hidden;
   margin: 0;
 }
 
-.placeholder-image.portrait {
+.photo.portrait {
   aspect-ratio: 3 / 4;
 }
 
-.placeholder-image figcaption {
-  font-family: ui-monospace, Menlo, monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  background: var(--cream);
-  padding: 6px 10px;
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-media {
