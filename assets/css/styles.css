@@ -1,0 +1,501 @@
+:root {
+  --cream: #F3EDE2;
+  --cream-light: #E4DACB;
+  --cream-lighter: #EDE5D7;
+  --brown-dark: #493C34;
+  --brown-mid: #5C4E45;
+  --brown-light: #6B5C51;
+  --tan: #B7A895;
+  --tan-light: #D6CDBB;
+  --olive: #596044;
+  --rust: #8C5850;
+  --muted: #8C7E6C;
+  --placeholder-a: #E7DECE;
+  --placeholder-b: #F0E8DB;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max-width: 1180px;
+  --pad-x: clamp(24px, 6vw, 88px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--olive);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--brown-dark);
+}
+
+::selection {
+  background: var(--tan);
+  color: var(--cream);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--brown-dark);
+  color: var(--cream);
+  padding: 10px 16px;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+/* Header */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 24px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  letter-spacing: 0.01em;
+  color: var(--brown-dark);
+}
+
+.wordmark em {
+  font-style: italic;
+  color: var(--olive);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px clamp(16px, 3vw, 32px);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.site-nav a,
+.footer-nav a {
+  display: inline-block;
+  padding: 6px 2px;
+}
+
+/* Styled as a pill CTA rather than an underline, which in nav UI
+   conventionally reads as "current page" — this link leaves the site. */
+.site-nav a.nav-cta {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--olive);
+  color: var(--cream);
+}
+
+.site-nav a.nav-cta:hover,
+.site-nav a.nav-cta:focus-visible {
+  background: var(--brown-dark);
+  color: var(--cream);
+}
+
+/* Hero */
+
+.hero {
+  padding-top: clamp(28px, 5vw, 56px);
+  padding-bottom: clamp(56px, 8vw, 100px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 26px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6.2vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--olive);
+}
+
+.hero-lede {
+  margin: 28px 0 0;
+  max-width: 46ch;
+  font-size: 18px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.link-underline {
+  display: inline-block;
+  margin-top: 34px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--tan);
+  padding-bottom: 3px;
+}
+
+.placeholder-image {
+  aspect-ratio: 4 / 5;
+  background: repeating-linear-gradient(135deg, var(--placeholder-a) 0 9px, var(--placeholder-b) 9px 18px);
+  border: 1px solid var(--tan);
+  display: flex;
+  align-items: flex-start;
+  padding: 22px;
+  margin: 0;
+}
+
+.placeholder-image.portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.placeholder-image figcaption {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: var(--cream);
+  padding: 6px 10px;
+}
+
+.hero-media {
+  position: relative;
+}
+
+.pull-quote {
+  position: relative;
+  z-index: 1;
+  margin: -34px 0 0;
+  width: fit-content;
+  max-width: min(100%, 290px);
+  background: var(--cream);
+  border: 1px solid var(--tan);
+  padding: 20px 24px;
+}
+
+.pull-quote p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+/* Brand truth (dark section) */
+
+.brand-truth {
+  background: var(--brown-dark);
+  color: var(--cream);
+  padding: clamp(64px, 9vw, 116px) 0;
+}
+
+.brand-truth .wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(32px, 6vw, 84px);
+  align-items: start;
+}
+
+.brand-truth .eyebrow {
+  color: var(--tan);
+}
+
+.brand-truth h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.brand-truth .lead {
+  margin: 0;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.rule {
+  width: 56px;
+  height: 1px;
+  background: var(--olive);
+  margin: 36px 0;
+  border: none;
+}
+
+.brand-truth p.body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--cream-light);
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+
+.brand-truth p.body + p.body {
+  margin-top: 22px;
+}
+
+/* Shared section spacing */
+
+.section {
+  padding-top: clamp(64px, 9vw, 116px);
+  padding-bottom: clamp(64px, 9vw, 116px);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.section-head h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.1;
+}
+
+.section-head p {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--brown-light);
+}
+
+/* Cards grid */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1px;
+  background: var(--tan);
+  border: 1px solid var(--tan);
+}
+
+.card {
+  background: var(--cream);
+  padding: clamp(28px, 3.4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-number {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--rust);
+}
+
+.card h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(24px, 2.5vw, 32px);
+  line-height: 1.2;
+}
+
+.card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--brown-mid);
+  text-wrap: pretty;
+}
+
+.section-note {
+  margin: clamp(32px, 4vw, 48px) 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.4;
+  color: var(--olive);
+  max-width: 34ch;
+}
+
+/* About */
+
+.about {
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+
+.about h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.8vw, 48px);
+  line-height: 1.12;
+  text-wrap: pretty;
+}
+
+.about p.lede {
+  margin: 24px 0 0;
+  max-width: 50ch;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--brown-mid);
+  text-wrap: pretty;
+}
+
+.about p.body {
+  margin: 20px 0 0;
+  max-width: 50ch;
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--brown-mid);
+  text-wrap: pretty;
+}
+
+.about .signature {
+  margin: 28px 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--olive);
+}
+
+/* Beliefs (olive section) */
+
+.beliefs {
+  background: var(--olive);
+  color: var(--cream);
+  padding: clamp(60px, 8vw, 108px) 0;
+}
+
+.beliefs .wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(36px, 6vw, 84px);
+  align-items: start;
+}
+
+.beliefs .eyebrow {
+  margin: 0 0 26px;
+  color: var(--tan-light);
+}
+
+.belief-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.belief-list.refuse {
+  color: var(--cream-lighter);
+}
+
+.beliefs .tagline {
+  margin: 40px 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(21px, 2.2vw, 27px);
+  line-height: 1.4;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--tan);
+  padding: clamp(44px, 6vw, 72px) 0;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.footer-brand p:first-child {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--brown-dark);
+}
+
+.footer-brand em {
+  font-style: italic;
+  color: var(--olive);
+}
+
+.footer-brand p:last-child {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--brown-light);
+  max-width: 34ch;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 15px;
+}
+
+.footer-legal {
+  margin: clamp(32px, 4vw, 48px) 0 0;
+  font-size: 13px;
+  color: var(--brown-light);
+}
