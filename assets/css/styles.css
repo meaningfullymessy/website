@@ -314,12 +314,20 @@ a:focus-visible {
 
 /* Cards grid */
 
+/* Explicit 1/2-column breakpoints rather than auto-fit: with exactly 4 cards,
+   any layout that could land on 3 columns leaves an empty, oddly-colored cell. */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: 1fr;
   gap: 1px;
   background: var(--tan);
   border: 1px solid var(--tan);
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card {
