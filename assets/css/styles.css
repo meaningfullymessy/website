@@ -181,10 +181,6 @@ a:focus-visible {
   margin: 0;
 }
 
-.photo.portrait {
-  aspect-ratio: 3 / 4;
-}
-
 .photo img {
   display: block;
   width: 100%;
@@ -367,10 +363,34 @@ a:focus-visible {
 
 .about {
   padding-top: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: clamp(32px, 6vw, 80px);
+}
+
+.about-byline {
+  display: flex;
   align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--tan);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-byline .eyebrow {
+  margin: 0;
 }
 
 .about h2 {
