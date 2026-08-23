@@ -363,6 +363,7 @@ a:focus-visible {
 
 .about {
   padding-top: 0;
+  padding-bottom: clamp(64px, 9vw, 116px);
 }
 
 .about-byline {
