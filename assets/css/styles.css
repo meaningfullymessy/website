@@ -444,6 +444,15 @@ a:focus-visible {
   align-items: start;
 }
 
+/* Stacked on narrow screens: a rule and extra top space stand in for the
+   column gap so "What I refuse" doesn't just run on from the list above. */
+@media (max-width: 700px) {
+  .beliefs .wrap > div + div {
+    border-top: 1px solid rgba(243, 237, 226, 0.18);
+    padding-top: clamp(36px, 6vw, 84px);
+  }
+}
+
 .beliefs .eyebrow {
   margin: 0 0 26px;
   color: var(--tan-light);
@@ -460,8 +469,26 @@ a:focus-visible {
   line-height: 1.55;
 }
 
+.belief-list li {
+  display: flex;
+  gap: 12px;
+}
+
+.belief-list li::before {
+  content: "\2713";
+  flex-shrink: 0;
+  color: var(--tan-light);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .belief-list.refuse {
   color: var(--cream-lighter);
+}
+
+.belief-list.refuse li::before {
+  content: "\2715";
+  color: rgba(243, 237, 226, 0.5);
 }
 
 .beliefs .tagline {
