@@ -9,7 +9,8 @@ src/pages/             one file per route — src/pages/about.astro -> /about
 src/layouts/Layout.astro   shared <head>, header, footer — edit here to change them site-wide
 src/components/        Header.astro, Footer.astro (used by Layout.astro)
 src/templates/          copy-and-edit templates for new pages (see below) — not built as routes
-public/                 served as-is at the site root: assets/css, assets/images, favicon, logo
+src/styles/global.css   shared stylesheet, imported by Layout.astro — Astro fingerprints it on build
+public/                 served as-is, unhashed: assets/images, favicon, downloads, logo
 functions/              Cloudflare Pages Functions (small server-side endpoints, e.g. /api/subscribe)
 scripts/pdf-sources/    editable HTML source for downloadable PDFs (see "Regenerating a PDF" below)
 design/                 original Claude Design canvas source, not part of the deployed site
