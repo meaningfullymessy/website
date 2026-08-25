@@ -1,0 +1,57 @@
+---
+// ─────────────────────────────────────────────────────────────────────────
+// LANDING PAGE TEMPLATE
+//
+// This file is NOT a live page on its own — it lives outside src/pages/, so
+// Astro won't build it into a URL. To create a new page from it:
+//
+//   1. Copy this file into src/pages/, e.g.:
+//        cp src/templates/landing-page.astro src/pages/spring-workshop.astro
+//   2. Edit the placeholders below, marked "EDIT ME".
+//   3. Add your image to public/assets/images/ and point IMAGE src at it.
+//   4. Save, commit, and open a PR — once merged and deployed, the page is
+//      live at /spring-workshop (the URL matches whatever you named the file).
+// ─────────────────────────────────────────────────────────────────────────
+import Layout from '../layouts/Layout.astro';
+
+// EDIT ME — shown in the browser tab and used for search engines / social shares.
+const pageTitle = 'Meaningfully Messy — [Page name]';
+const pageDescription = '[One or two sentences describing this page, for search engines and link previews.]';
+---
+<Layout title={pageTitle} description={pageDescription}>
+  <section class="hero wrap" aria-labelledby="landing-title">
+    <div>
+      <!-- EYEBROW — small label above the headline. Delete this <p> if you don't need one. -->
+      <p class="eyebrow">[Eyebrow label]</p>
+
+      <!-- HEADLINE -->
+      <h1 id="landing-title" class="hero-title">[Your headline goes here.<br /><em>Emphasize a phrase like this.</em>]</h1>
+
+      <!-- BODY COPY — the main lede paragraph under the headline. -->
+      <p class="hero-lede">
+        [Write one or two sentences that expand on the headline and tell the reader what this page is about.]
+      </p>
+
+      <!-- CALL TO ACTION — change href and button text. Use .link-underline
+           instead of .cta-button for a quieter text link rather than a button. -->
+      <a href="[/where-this-link-should-go]" class="cta-button">[Button text, e.g. "Get started"]</a>
+    </div>
+
+    <div class="hero-media">
+      <figure class="photo">
+        <!-- IMAGE — swap src and alt text. Update width/height to match your
+             actual image file (keeps the layout from shifting while it loads). -->
+        <img src="/assets/images/your-image.jpg" width="580" height="724" alt="[Describe the image for screen readers]" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- OPTIONAL — more body copy below the fold. Duplicate the <p class="body-copy">
+       line for additional paragraphs, or delete this whole <section> if the
+       hero above says everything this page needs to say. -->
+  <section class="section wrap">
+    <p class="body-copy">
+      [Optional: additional body copy — more detail, supporting points, or context that didn't fit in the lede above.]
+    </p>
+  </section>
+</Layout>

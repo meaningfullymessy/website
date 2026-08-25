@@ -200,6 +200,41 @@ a:focus-visible {
   padding-bottom: 3px;
 }
 
+/* Generic body-copy paragraph — same treatment as .about p.body, but usable
+   on any page rather than scoped to the About section. */
+.body-copy {
+  margin: 20px 0 0;
+  max-width: 50ch;
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--brown);
+  text-wrap: pretty;
+}
+
+.body-copy + .body-copy {
+  margin-top: 16px;
+}
+
+/* Primary call-to-action button — same pill treatment as .nav-cta, sized up
+   for use as a page's main CTA rather than a nav item. */
+.cta-button {
+  display: inline-block;
+  margin-top: 34px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: var(--olive);
+  color: var(--chalk);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+.cta-button:hover,
+.cta-button:focus-visible {
+  background: var(--olive-deep);
+  color: var(--chalk);
+}
+
 .photo {
   aspect-ratio: 4 / 5;
   border: 1px solid var(--linen);
