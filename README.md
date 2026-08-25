@@ -10,6 +10,8 @@ src/layouts/Layout.astro   shared <head>, header, footer — edit here to change
 src/components/        Header.astro, Footer.astro (used by Layout.astro)
 src/templates/          copy-and-edit templates for new pages (see below) — not built as routes
 public/                 served as-is at the site root: assets/css, assets/images, favicon, logo
+functions/              Cloudflare Pages Functions (small server-side endpoints, e.g. /api/subscribe)
+scripts/pdf-sources/    editable HTML source for downloadable PDFs (see "Regenerating a PDF" below)
 design/                 original Claude Design canvas source, not part of the deployed site
 ```
 
@@ -38,6 +40,23 @@ in the site's visual style.
 
 The new page goes live at `/spring-workshop` (matching whatever you named
 the file) once the PR is merged and deployed.
+
+## Regenerating a downloadable PDF
+
+Downloadable PDFs (e.g. `public/downloads/seasonal-menus-printable.pdf`) are
+generated from an editable HTML source in `scripts/pdf-sources/`, rendered
+with Chromium's print engine — not hand-exported, so the content can be
+edited as plain HTML/CSS and regenerated exactly.
+
+Playwright is intentionally *not* a project dependency (it would download a
+full Chromium binary on every future `npm install`, including Cloudflare's
+build step), so install it temporarily to regenerate a PDF:
+
+```bash
+npm install -D playwright
+node scripts/render-pdf.mjs scripts/pdf-sources/seasonal-menus.html public/downloads/seasonal-menus-printable.pdf
+npm uninstall playwright
+```
 
 ## Deploying
 

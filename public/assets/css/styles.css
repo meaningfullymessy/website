@@ -254,6 +254,49 @@ button.cta-button:disabled {
   font-size: clamp(34px, 4.5vw, 56px);
 }
 
+/* Small accent bar above a heading, used in place of an eyebrow when the
+   heading itself is the label (no separate kicker text needed). */
+.kicker-rule {
+  width: 26px;
+  height: 2px;
+  background: var(--olive);
+  margin: 0 0 22px;
+  border: none;
+}
+
+.kicker-rule.is-centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Same heading treatment as .section-head h2, but unscoped for headings
+   that don't sit in a .section-head row (e.g. a kicker-rule + heading
+   stacked in a column rather than paired with a paragraph). */
+.section-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 48;
+  font-weight: 600;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--forest);
+}
+
+/* Accent-tone eyebrow (e.g. a success-state label), in place of the default
+   muted stone-700. */
+.eyebrow.is-accent {
+  color: var(--olive);
+}
+
+/* Full-width button variant, for forms where the button should span the
+   input column rather than size to its own text. */
+.cta-button.is-full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
 /* Opt-in form (email capture) — built for lead-magnet landing pages like
    /seasonal-menus, kept generic so any future opt-in page can reuse it. */
 .opt-in {
@@ -301,6 +344,78 @@ button.cta-button:disabled {
 .opt-in-field input:focus-visible {
   outline: 2px solid var(--olive);
   outline-offset: 1px;
+}
+
+.opt-in-field input.is-centered {
+  text-align: center;
+}
+
+/* Centered variant of the opt-in form, for a closing/bottom-of-page CTA
+   rather than the hero column. */
+.closing-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+
+.closing-cta .opt-in-fields {
+  width: 100%;
+  max-width: 420px;
+  margin-top: 0;
+}
+
+.closing-cta .success-panel {
+  text-align: center;
+  max-width: 420px;
+}
+
+/* Lighter-weight success state for the closing CTA — a signature-style line
+   plus a text link, rather than the hero's full bordered card. */
+.closing-success {
+  display: none;
+}
+
+.closing-success.is-visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.closing-success .signature,
+.closing-success .link-underline {
+  margin-top: 0;
+}
+
+/* Visually hidden but still readable by screen readers — used for form
+   labels where the input's placeholder already carries the visible cue. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* About-lite: an avatar + short bio row, lighter than the full .about
+   section (no big heading) — used on landing pages for a brief "who's
+   sending this" credibility block. */
+.about-lite {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+@media (max-width: 560px) {
+  .about-lite {
+    flex-direction: column;
+  }
 }
 
 .form-note {
@@ -434,11 +549,22 @@ button.cta-button:disabled {
   margin-top: 22px;
 }
 
+.brand-truth p.body.is-muted {
+  color: rgba(205, 210, 188, 0.6);
+}
+
 /* Shared section spacing */
 
 .section {
   padding-top: clamp(64px, 9vw, 116px);
   padding-bottom: clamp(64px, 9vw, 116px);
+}
+
+/* Tighter padding for content-light sections (a short bio row, a closing
+   form) — the default scale reads as excess empty space around them. */
+.section.is-compact {
+  padding-top: clamp(48px, 6vw, 84px);
+  padding-bottom: clamp(48px, 6vw, 84px);
 }
 
 .section-head {
@@ -479,6 +605,7 @@ button.cta-button:disabled {
   gap: 1px;
   background: var(--linen);
   border: 1px solid var(--linen);
+  margin-top: 32px;
 }
 
 @media (min-width: 640px) {
@@ -597,7 +724,9 @@ button.cta-button:disabled {
   text-wrap: pretty;
 }
 
-.about .signature {
+/* Not scoped to .about — this italic olive tagline treatment is reused
+   wherever a page wants a signature-style closing line. */
+.signature {
   margin: 28px 0 0;
   font-family: var(--font-serif);
   font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 72;
