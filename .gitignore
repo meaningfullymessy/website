@@ -6,3 +6,4 @@ source-photos/
 brand-assets/
 dist/
 .astro/
+.dev.vars

@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Free Seasonal Dinner Menus — Meaningfully Messy"
+  description="Two rotating master menus — spring/summer and fall/winter — with 30-some tried-and-true family dinners each. Free printable from Meaningfully Messy."
+>
+  <section class="section wrap">
+    <div class="opt-in">
+      <p class="eyebrow">Free printable</p>
+      <h1 class="hero-title is-compact">A whole year of dinners,<br /><em>already decided.</em></h1>
+      <p class="hero-lede">
+        Two rotating master menus — spring/summer and fall/winter — with 30-some dinners we actually make, again and again. Pick your next four or five, shop once, and check them off as you go. When you reach the bottom, start back at the top.
+      </p>
+
+      <ul class="belief-list opt-in-highlights">
+        <li>Spring &amp; summer master menu — 34 dinners</li>
+        <li>Fall &amp; winter master menu — 31 dinners</li>
+        <li>Print it, stick it on the fridge, stop deciding every night</li>
+      </ul>
+
+      <form id="opt-in-form" class="opt-in-fields" novalidate>
+        <div class="opt-in-field">
+          <label for="opt-in-name">First name</label>
+          <input id="opt-in-name" name="first_name" type="text" autocomplete="given-name" required />
+        </div>
+        <div class="opt-in-field">
+          <label for="opt-in-email">Email address</label>
+          <input id="opt-in-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <button type="submit" class="cta-button">Send me the menus</button>
+        <p class="form-note">You'll get this printable plus occasional emails from Meaningfully Messy. Unsubscribe anytime.</p>
+        <p class="form-note" role="status" aria-live="polite" id="opt-in-status"></p>
+      </form>
+
+      <div class="success-panel" id="opt-in-success">
+        <h2>Your menus are ready.</h2>
+        <p>Print them, stick them on the fridge, and stop deciding what's for dinner every night.</p>
+        <a class="cta-button" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('opt-in-form') as HTMLFormElement;
+  const status = document.getElementById('opt-in-status') as HTMLParagraphElement;
+  const success = document.getElementById('opt-in-success') as HTMLDivElement;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const firstName = (form.elements.namedItem('first_name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+
+    if (!firstName || !email) {
+      status.textContent = 'Please fill in your name and email.';
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitButton.disabled = true;
+    status.textContent = '';
+
+    // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
+    // which holds the Kit API key server-side — never in this client code.
+    // Fired and not awaited on purpose: the visitor still gets their PDF
+    // even if this call fails or is slow — the download isn't gated on it.
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, first_name: firstName }),
+    }).catch((err) => {
+      console.error('Subscribe request failed:', err);
+    });
+
+    // Not form.hidden — .opt-in-fields sets display:flex in the stylesheet,
+    // which (being author CSS) overrides the browser's default
+    // [hidden] { display: none } regardless of selector specificity.
+    form.style.display = 'none';
+    success.classList.add('is-visible');
+  });
+</script>
