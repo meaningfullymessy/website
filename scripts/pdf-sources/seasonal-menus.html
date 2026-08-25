@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30,1;1,9..144,300..700,30,1&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --chalk: #FBF8F3;
+    --linen: #E6DED0;
+    --sage-400: #9AA47F;
+    --olive: #566327;
+    --forest: #252D18;
+    --brown: #48392F;
+    --stone-700: #746452;
+    --font-serif: 'Fraunces', Georgia, serif;
+    --font-sans: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--brown);
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    background: var(--chalk);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  .page-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .wordmark {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--forest);
+  }
+
+  .wordmark em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--olive);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--stone-700);
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--olive);
+  }
+
+  .footer-url {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--stone-700);
+  }
+
+  /* Cover page */
+  .cover {
+    padding: 64px 72px 0;
+  }
+
+  .cover-header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--linen);
+  }
+
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    padding: 48px 0;
+  }
+
+  .kicker-rule {
+    width: 26px;
+    height: 2px;
+    background: var(--olive);
+  }
+
+  .cover-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-variation-settings: 'SOFT' 30, 'WONK' 1;
+    font-weight: 600;
+    font-size: 58px;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--forest);
+    max-width: 11ch;
+  }
+
+  .cover-lede {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.55;
+    max-width: 34ch;
+    color: var(--brown);
+  }
+
+  .cover-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .cover-list-item {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .cover-list-item .tick {
+    width: 7px;
+    height: 1.5px;
+    background: var(--olive);
+    flex: none;
+    transform: translateY(-4px);
+  }
+
+  .cover-list-item span:last-child {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .cover-footer {
+    background: var(--olive);
+    color: var(--chalk);
+    padding: 34px 72px;
+    gap: 24px;
+  }
+
+  .cover-footer .footer-tagline {
+    color: var(--chalk);
+    font-size: 20px;
+  }
+
+  .cover-footer .footer-url {
+    color: var(--chalk);
+    font-size: 12px;
+  }
+
+  /* Menu pages */
+  .menu-page {
+    padding: 52px 59px 40px;
+  }
+
+  .menu-page .wordmark {
+    font-size: 15px;
+  }
+
+  .menu-title {
+    margin: 30px 0 0;
+    font-family: var(--font-serif);
+    font-variation-settings: 'SOFT' 30, 'WONK' 1;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--forest);
+  }
+
+  .menu-instructions {
+    margin: 13px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 76ch;
+    color: var(--stone-700);
+  }
+
+  .menu-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 0 0;
+  }
+
+  .menu-list label {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    height: 22px;
+    font-size: 16px;
+    color: var(--brown);
+  }
+
+  .menu-list .box {
+    width: 12px;
+    height: 12px;
+    border: 1.4px solid var(--sage-400);
+    border-radius: 2px;
+    flex: none;
+  }
+</style>
+</head>
+<body>
+
+  <div class="page cover">
+    <div class="page-row cover-header">
+      <span class="eyebrow">Free printable · Dinner rhythms</span>
+      <span class="wordmark">Meaningfully <em>Messy</em></span>
+    </div>
+    <div class="cover-body">
+      <div class="kicker-rule"></div>
+      <h1 class="cover-title">Seasonal Dinners Menu</h1>
+      <p class="cover-lede">One printable with two seasonal menus, front and back. Every week, pick the next four or five dinners and shop.</p>
+      <div class="cover-list">
+        <div class="cover-list-item"><span class="tick"></span><span>Spring &amp; summer menu</span></div>
+        <div class="cover-list-item"><span class="tick"></span><span>Fall &amp; winter menu</span></div>
+        <div class="cover-list-item"><span class="tick"></span><span>Checkboxes, not a calendar</span></div>
+        <div class="cover-list-item"><span class="tick"></span><span>Less decisions, more of what matters</span></div>
+      </div>
+    </div>
+    <div class="page-row cover-footer">
+      <span class="footer-tagline">Better rhythms that make room for what matters.</span>
+      <span class="footer-url">meaningfullymessy.com</span>
+    </div>
+  </div>
+
+  <div class="page menu-page">
+    <div class="page-row">
+      <span class="eyebrow">Master menu · Spring / summer</span>
+      <span class="wordmark">Meaningfully <em>Messy</em></span>
+    </div>
+    <h2 class="menu-title">Spring &amp; summer dinners</h2>
+    <p class="menu-instructions">Each week, pick the next four or five dinners and shop for those. Check them off as you go. When you reach the bottom, start again at the top.</p>
+    <div class="menu-list">
+      <label><span class="box"></span>Tacos</label>
+      <label><span class="box"></span>Chicken Stir Fry</label>
+      <label><span class="box"></span>Spaghetti and Meatballs &amp; Salad</label>
+      <label><span class="box"></span>Grilled Chicken, Sweet Potatoes &amp; Green Beans</label>
+      <label><span class="box"></span>Steak &amp; Avocado Bowls</label>
+      <label><span class="box"></span>Chicken Caesar Wraps</label>
+      <label><span class="box"></span>Brats, Potatoes &amp; Fruit</label>
+      <label><span class="box"></span>Homemade Pizza</label>
+      <label><span class="box"></span>Chicken Fajitas</label>
+      <label><span class="box"></span>Greek Chicken Bowls</label>
+      <label><span class="box"></span>BBQ Pulled Pork Sandwiches, Coleslaw &amp; Broccoli Salad</label>
+      <label><span class="box"></span>Lemon Garlic Chicken Pasta</label>
+      <label><span class="box"></span>Chicken Tzatziki Bowls</label>
+      <label><span class="box"></span>Burgers, Corn on the Cob &amp; Fruit</label>
+      <label><span class="box"></span>Quesadillas &amp; Fruit</label>
+      <label><span class="box"></span>Italian Shredded Beef Sandwiches &amp; Pasta Salad</label>
+      <label><span class="box"></span>Teriyaki Chicken &amp; Rice Bowls</label>
+      <label><span class="box"></span>Baked Ziti &amp; Salad</label>
+      <label><span class="box"></span>Chicken Pot Pie &amp; Salad</label>
+      <label><span class="box"></span>Breakfast for Dinner</label>
+      <label><span class="box"></span>Burrito Bowls</label>
+      <label><span class="box"></span>Chicken Noodle Orzo Soup &amp; Bread</label>
+      <label><span class="box"></span>BBQ Chicken, Mac n Cheese &amp; Brussel Sprouts</label>
+      <label><span class="box"></span>Chicken Kabobs, Rice &amp; Fruit</label>
+      <label><span class="box"></span>Meatloaf, Potatoes &amp; Broccoli</label>
+      <label><span class="box"></span>Chicken Casserole &amp; Salad</label>
+      <label><span class="box"></span>Cuban Pork &amp; Rice Bowls</label>
+      <label><span class="box"></span>French Dip Sandwiches, Fries &amp; Fruit</label>
+      <label><span class="box"></span>Italian Sausage &amp; Tortellini Soup</label>
+      <label><span class="box"></span>Chicken, Zucchini &amp; Rice Bowls</label>
+      <label><span class="box"></span>Chicken Parmesan Pasta</label>
+      <label><span class="box"></span>Chicken Gyros, Pasta Salad &amp; Fruit</label>
+      <label><span class="box"></span>Grilled Lemon Herb Chicken &amp; Avocado Orzo</label>
+      <label><span class="box"></span>Salsa Verde Chicken Nachos</label>
+    </div>
+    <div class="page-row footer-row">
+      <span class="footer-tagline">Better rhythms that make room for what matters.</span>
+      <span class="footer-url">meaningfullymessy.com</span>
+    </div>
+  </div>
+
+  <div class="page menu-page">
+    <div class="page-row">
+      <span class="eyebrow">Master menu · Fall / winter</span>
+      <span class="wordmark">Meaningfully <em>Messy</em></span>
+    </div>
+    <h2 class="menu-title">Fall &amp; winter dinners</h2>
+    <p class="menu-instructions">Each week, pick the next four or five dinners and shop for those. Check them off as you go. When you reach the bottom, start again at the top.</p>
+    <div class="menu-list">
+      <label><span class="box"></span>Beef Stew, Bread &amp; Salad</label>
+      <label><span class="box"></span>Burrito Bowls</label>
+      <label><span class="box"></span>Buffalo Chicken Chili</label>
+      <label><span class="box"></span>Spaghetti and Meatballs &amp; Salad</label>
+      <label><span class="box"></span>Meatloaf, Mashed Potatoes &amp; Brussel Sprouts</label>
+      <label><span class="box"></span>Gumbo &amp; Rice</label>
+      <label><span class="box"></span>Shepherd's Pie &amp; Salad</label>
+      <label><span class="box"></span>Taco Soup</label>
+      <label><span class="box"></span>Baked Chicken, Sweet Potatoes &amp; Broccoli</label>
+      <label><span class="box"></span>Chicken Gnocchi Soup, Bread &amp; Salad</label>
+      <label><span class="box"></span>Chicken Casserole, Salad &amp; Broccoli</label>
+      <label><span class="box"></span>Chili</label>
+      <label><span class="box"></span>Chicken Pot Pie &amp; Salad</label>
+      <label><span class="box"></span>Creamy Chicken Noodle Soup &amp; Bread</label>
+      <label><span class="box"></span>Lasagna, Garlic Bread &amp; Salad</label>
+      <label><span class="box"></span>Chicken Enchiladas, Rice &amp; Beans</label>
+      <label><span class="box"></span>Turkey &amp; Lentil Soup, Bread &amp; Salad</label>
+      <label><span class="box"></span>White Chicken Chili</label>
+      <label><span class="box"></span>Baked Ziti &amp; Salad</label>
+      <label><span class="box"></span>French Dip Sandwiches &amp; Fries</label>
+      <label><span class="box"></span>Homemade Pizza</label>
+      <label><span class="box"></span>Tacos</label>
+      <label><span class="box"></span>Lasagna Soup, Bread &amp; Salad</label>
+      <label><span class="box"></span>Breakfast For Dinner</label>
+      <label><span class="box"></span>Potato Soup, Bread &amp; Salad</label>
+      <label><span class="box"></span>Italian Sausage and Tortellini Soup, Bread &amp; Salad</label>
+      <label><span class="box"></span>Salsa Verde Chicken Nachos</label>
+      <label><span class="box"></span>Chicken Stir Fry</label>
+      <label><span class="box"></span>Chicken Parmesan Pasta, Bread &amp; Salad</label>
+      <label><span class="box"></span>Burgers, Mac N Cheese &amp; Broccoli</label>
+      <label><span class="box"></span>Cuban Pork &amp; Rice</label>
+    </div>
+    <div class="page-row footer-row">
+      <span class="footer-tagline">Better rhythms that make room for what matters.</span>
+      <span class="footer-url">meaningfullymessy.com</span>
+    </div>
+  </div>
+
+</body>
+</html>

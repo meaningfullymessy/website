@@ -2,82 +2,170 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout
-  title="Free Seasonal Dinner Menus — Meaningfully Messy"
-  description="Two rotating master menus — spring/summer and fall/winter — with 30-some tried-and-true family dinners each. Free printable from Meaningfully Messy."
+  title="Stop Reinventing the Meal Plan — Meaningfully Messy"
+  description="One printable with two seasonal menus, front and back. Every week, pick the next four or five dinners and shop. Free from Meaningfully Messy."
 >
-  <section class="section wrap">
+  <section class="hero wrap" aria-labelledby="hero-heading">
     <div class="opt-in">
-      <p class="eyebrow">Free printable</p>
-      <h1 class="hero-title is-compact">A whole year of dinners,<br /><em>already decided.</em></h1>
-      <p class="hero-lede">
-        Two rotating master menus — spring/summer and fall/winter — with 30-some dinners we actually make, again and again. Pick your next four or five, shop once, and check them off as you go. When you reach the bottom, start back at the top.
-      </p>
+      <hr class="kicker-rule" />
+      <h1 id="hero-heading" class="hero-title is-compact">Stop reinventing the meal plan</h1>
+      <p class="hero-lede">One printable with two seasonal menus, front and back. Every week, pick the next four or five dinners and shop.</p>
 
-      <ul class="belief-list opt-in-highlights">
-        <li>Spring &amp; summer master menu — 34 dinners</li>
-        <li>Fall &amp; winter master menu — 31 dinners</li>
-        <li>Print it, stick it on the fridge, stop deciding every night</li>
-      </ul>
-
-      <form id="opt-in-form" class="opt-in-fields" novalidate>
+      <form id="hero-form" class="opt-in-fields" novalidate>
         <div class="opt-in-field">
-          <label for="opt-in-name">First name</label>
-          <input id="opt-in-name" name="first_name" type="text" autocomplete="given-name" required />
+          <label class="sr-only" for="hero-name">First name</label>
+          <input id="hero-name" name="first_name" type="text" placeholder="First name" autocomplete="given-name" />
         </div>
         <div class="opt-in-field">
-          <label for="opt-in-email">Email address</label>
-          <input id="opt-in-email" name="email" type="email" autocomplete="email" required />
+          <label class="sr-only" for="hero-email">Email address</label>
+          <input id="hero-email" name="email" type="email" placeholder="Email address" autocomplete="email" required />
         </div>
-        <button type="submit" class="cta-button">Send me the menus</button>
-        <p class="form-note">You'll get this printable plus occasional emails from Meaningfully Messy. Unsubscribe anytime.</p>
-        <p class="form-note" role="status" aria-live="polite" id="opt-in-status"></p>
+        <button type="submit" class="cta-button is-full">Send me both menus</button>
+        <p class="form-note">One email with both printables. Unsubscribe anytime.</p>
+        <p class="form-note" role="status" aria-live="polite" id="hero-status"></p>
       </form>
 
-      <div class="success-panel" id="opt-in-success">
-        <h2>Your menus are ready.</h2>
-        <p>Print them, stick them on the fridge, and stop deciding what's for dinner every night.</p>
+      <div class="success-panel" id="hero-success">
+        <p class="eyebrow is-accent">On its way</p>
+        <p>Your menus are ready — print them, stick them inside a cabinet door, and start at the top.</p>
         <a class="cta-button" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <figure class="photo">
+        <img src="/assets/images/hero.jpg" width="580" height="724" alt="A full house, mid-afternoon" />
+      </figure>
+      <blockquote class="pull-quote">
+        <p>I don't want to spend their childhood deciding what's for dinner.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="brand-truth">
+    <div class="wrap">
+      <div>
+        <h2>With four kids under six, I didn't need more options. I needed fewer decisions.</h2>
+      </div>
+      <div>
+        <hr class="rule" />
+        <p class="body">Meal planning used to mean starting over every Sunday. Now I keep two lists of dinners we already eat, and grocery shopping starts with a list instead of a blank page.</p>
+        <p class="body is-muted">We still get variety. I'm just not reinventing it every week.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <hr class="kicker-rule" />
+    <h2 class="section-title">What's inside</h2>
+    <div class="cards-grid">
+      <article class="card">
+        <span class="card-number">01</span>
+        <h3>Spring &amp; summer menu</h3>
+        <p>Dinners that lean toward the grill, wraps, bowls and kebabs. One column, ready to print.</p>
+      </article>
+      <article class="card">
+        <span class="card-number">02</span>
+        <h3>Fall &amp; winter menu</h3>
+        <p>The cozy half of the year on the back of the same page: soups, chilis, casseroles and bread on the side. Flip it when the season turns.</p>
+      </article>
+      <article class="card">
+        <span class="card-number">03</span>
+        <h3>Checkboxes, not a calendar</h3>
+        <p>Check dinners off as you eat them. At the bottom of the list, start again at the top.</p>
+      </article>
+      <article class="card">
+        <span class="card-number">04</span>
+        <h3>Focus on what matters</h3>
+        <p>Grocery shopping starts with a list instead of a blank page, so the mental load of dinner stops taking up your week.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section is-compact wrap">
+    <div class="about-lite">
+      <figure class="avatar">
+        <img src="/assets/images/portrait.jpg" width="450" height="600" alt="Portrait of Lauren smiling" loading="lazy" />
+      </figure>
+      <div>
+        <p class="eyebrow">Who's sending this</p>
+        <p class="body-copy">I'm Lauren, a homeschool mom of four. I share the rhythms and systems that keep our full house feeling meaningful and manageable. This is one of them.</p>
+        <p class="signature">Life with kids is messy. Let's make it meaningful.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-compact wrap">
+    <div class="closing-cta">
+      <hr class="kicker-rule is-centered" />
+      <h2 class="section-title">Get both menus, free</h2>
+
+      <form id="closing-form" class="opt-in-fields" novalidate>
+        <div class="opt-in-field">
+          <label class="sr-only" for="closing-email">Email address</label>
+          <input id="closing-email" name="email" type="email" placeholder="Email address" autocomplete="email" required class="is-centered" />
+        </div>
+        <button type="submit" class="cta-button is-full">Send me both menus</button>
+      </form>
+
+      <div class="closing-success" id="closing-success">
+        <p class="signature">Ready — go print it.</p>
+        <a class="link-underline" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
       </div>
     </div>
   </section>
 </Layout>
 
 <script>
-  const form = document.getElementById('opt-in-form') as HTMLFormElement;
-  const status = document.getElementById('opt-in-status') as HTMLParagraphElement;
-  const success = document.getElementById('opt-in-success') as HTMLDivElement;
+  function wireOptInForm(formEl: HTMLFormElement | null, statusEl: HTMLElement | null, successEl: HTMLElement | null) {
+    if (!formEl) return;
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    formEl.addEventListener('submit', (event) => {
+      event.preventDefault();
 
-    const firstName = (form.elements.namedItem('first_name') as HTMLInputElement).value.trim();
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+      const emailInput = formEl.elements.namedItem('email') as HTMLInputElement;
+      const firstNameInput = formEl.elements.namedItem('first_name') as HTMLInputElement | null;
+      const email = emailInput.value.trim();
+      const firstName = firstNameInput ? firstNameInput.value.trim() : '';
 
-    if (!firstName || !email) {
-      status.textContent = 'Please fill in your name and email.';
-      return;
-    }
+      if (!email) {
+        if (statusEl) statusEl.textContent = 'Please enter your email.';
+        return;
+      }
 
-    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    submitButton.disabled = true;
-    status.textContent = '';
+      const submitButton = formEl.querySelector('button[type="submit"]') as HTMLButtonElement;
+      submitButton.disabled = true;
+      if (statusEl) statusEl.textContent = '';
 
-    // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
-    // which holds the Kit API key server-side — never in this client code.
-    // Fired and not awaited on purpose: the visitor still gets their PDF
-    // even if this call fails or is slow — the download isn't gated on it.
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, first_name: firstName }),
-    }).catch((err) => {
-      console.error('Subscribe request failed:', err);
+      // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
+      // which holds the Kit API key server-side — never in this client code.
+      // Fired and not awaited on purpose: the visitor still gets their PDF
+      // even if this call fails or is slow — the download isn't gated on it.
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, first_name: firstName }),
+      }).catch((err) => {
+        console.error('Subscribe request failed:', err);
+      });
+
+      // Not formEl.hidden — .opt-in-fields sets display:flex in the
+      // stylesheet, which (being author CSS) overrides the browser's
+      // default [hidden] { display: none } regardless of selector specificity.
+      formEl.style.display = 'none';
+      if (successEl) successEl.classList.add('is-visible');
     });
+  }
 
-    // Not form.hidden — .opt-in-fields sets display:flex in the stylesheet,
-    // which (being author CSS) overrides the browser's default
-    // [hidden] { display: none } regardless of selector specificity.
-    form.style.display = 'none';
-    success.classList.add('is-visible');
-  });
+  wireOptInForm(
+    document.getElementById('hero-form') as HTMLFormElement,
+    document.getElementById('hero-status'),
+    document.getElementById('hero-success')
+  );
+
+  wireOptInForm(
+    document.getElementById('closing-form') as HTMLFormElement,
+    null,
+    document.getElementById('closing-success')
+  );
 </script>
