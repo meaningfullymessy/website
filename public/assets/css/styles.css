@@ -235,6 +235,107 @@ a:focus-visible {
   color: var(--chalk);
 }
 
+/* .cta-button is also used on <button> elements (opt-in forms) — reset the
+   native button chrome that the anchor version never had to worry about. */
+button.cta-button {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+button.cta-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Slightly smaller hero title for single-column pages (e.g. opt-in landing
+   pages), where the full two-column hero size reads oversized. */
+.hero-title.is-compact {
+  font-size: clamp(34px, 4.5vw, 56px);
+}
+
+/* Opt-in form (email capture) — built for lead-magnet landing pages like
+   /seasonal-menus, kept generic so any future opt-in page can reuse it. */
+.opt-in {
+  max-width: 560px;
+}
+
+.opt-in-highlights {
+  margin: 28px 0 0;
+}
+
+.opt-in-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+/* The flex gap above is the single source of spacing between fields — reset
+   each child's own margin so it doesn't stack on top of the gap. */
+.opt-in-fields > * {
+  margin-top: 0;
+}
+
+.opt-in-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--stone-700);
+}
+
+.opt-in-field input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--linen);
+  border-radius: 8px;
+  background: var(--chalk);
+  color: var(--brown);
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+
+.opt-in-field input:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 1px;
+}
+
+.form-note {
+  font-size: 13px;
+  color: var(--stone-700);
+}
+
+.success-panel {
+  display: none;
+  background: var(--chalk);
+  border: 1px solid var(--linen);
+  padding: clamp(28px, 3.4vw, 44px);
+  margin-top: 34px;
+}
+
+.success-panel.is-visible {
+  display: block;
+}
+
+.success-panel h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 48;
+  font-weight: 600;
+  font-size: clamp(24px, 2.5vw, 30px);
+  color: var(--forest);
+}
+
+.success-panel p {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--brown);
+}
+
 .photo {
   aspect-ratio: 4 / 5;
   border: 1px solid var(--linen);
