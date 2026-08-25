@@ -43,15 +43,6 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  // EDIT ME: paste your Kit "receives a webhook" automation URL here.
-  //
-  // In Kit: Automations -> new automation -> add trigger "Receives a
-  // webhook" -> copy the URL it generates -> paste it below in place of
-  // the placeholder. While that automation is waiting for its first
-  // webhook, submit this form once (npm run dev) so Kit can show you the
-  // payload and let you map `email` and `first_name` to subscriber fields.
-  const KIT_WEBHOOK_URL = 'PASTE_YOUR_KIT_WEBHOOK_URL_HERE';
-
   const form = document.getElementById('opt-in-form') as HTMLFormElement;
   const status = document.getElementById('opt-in-status') as HTMLParagraphElement;
   const success = document.getElementById('opt-in-success') as HTMLDivElement;
@@ -71,19 +62,17 @@ import Layout from '../layouts/Layout.astro';
     submitButton.disabled = true;
     status.textContent = '';
 
-    if (KIT_WEBHOOK_URL.startsWith('PASTE_')) {
-      console.warn('seasonal-menus.astro: KIT_WEBHOOK_URL is still a placeholder — the lead was NOT sent to Kit. Set the real webhook URL before this page goes live.');
-    } else {
-      // Fired and not awaited on purpose: the visitor still gets their PDF
-      // even if this call fails or is slow — the download isn't gated on it.
-      fetch(KIT_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, first_name: firstName }),
-      }).catch((err) => {
-        console.error('Kit webhook submission failed:', err);
-      });
-    }
+    // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
+    // which holds the Kit API key server-side — never in this client code.
+    // Fired and not awaited on purpose: the visitor still gets their PDF
+    // even if this call fails or is slow — the download isn't gated on it.
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, first_name: firstName }),
+    }).catch((err) => {
+      console.error('Subscribe request failed:', err);
+    });
 
     // Not form.hidden — .opt-in-fields sets display:flex in the stylesheet,
     // which (being author CSS) overrides the browser's default
