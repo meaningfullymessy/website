@@ -117,7 +117,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  function wireOptInForm(formEl: HTMLFormElement | null, statusEl: HTMLElement | null, successEl: HTMLElement | null) {
+  function wireOptInForm(formEl: HTMLFormElement | null, statusEl: HTMLElement | null, successEl: HTMLElement | null, source: string) {
     if (!formEl) return;
 
     formEl.addEventListener('submit', (event) => {
@@ -144,7 +144,7 @@ import Layout from '../layouts/Layout.astro';
       fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, first_name: firstName }),
+        body: JSON.stringify({ email, first_name: firstName, source }),
       }).catch((err) => {
         console.error('Subscribe request failed:', err);
       });
@@ -160,12 +160,14 @@ import Layout from '../layouts/Layout.astro';
   wireOptInForm(
     document.getElementById('hero-form') as HTMLFormElement,
     document.getElementById('hero-status'),
-    document.getElementById('hero-success')
+    document.getElementById('hero-success'),
+    'seasonal-menus'
   );
 
   wireOptInForm(
     document.getElementById('closing-form') as HTMLFormElement,
     null,
-    document.getElementById('closing-success')
+    document.getElementById('closing-success'),
+    'seasonal-menus'
   );
 </script>

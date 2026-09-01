@@ -777,6 +777,111 @@ button.cta-button:disabled {
   color: var(--chalk);
 }
 
+/* Newsletter (dark panel, two columns — same olive-deep treatment as
+   .beliefs, kept as its own class rather than shared since the two
+   sections' content shapes differ enough that forcing one class over
+   both would fight itself) */
+
+.newsletter {
+  background: var(--olive-deep);
+  color: var(--sage-200);
+  padding: clamp(60px, 8vw, 108px) 0;
+}
+
+.newsletter .wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(32px, 6vw, 84px);
+  align-items: center;
+}
+
+.newsletter .eyebrow {
+  color: var(--sage-400);
+}
+
+.newsletter h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 72;
+  font-weight: 600;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--chalk);
+  text-wrap: pretty;
+}
+
+.newsletter p.lede {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--sage-200);
+  max-width: 50ch;
+  text-wrap: pretty;
+}
+
+.newsletter .belief-list {
+  margin-top: 28px;
+}
+
+/* The card sits on the dark panel but is itself light, so text inside
+   needs to opt back out of .newsletter's sage-200 cascade. */
+.newsletter-card {
+  background: var(--chalk);
+  color: var(--brown);
+  padding: clamp(32px, 4vw, 48px);
+}
+
+.newsletter-card h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 48;
+  font-weight: 600;
+  font-size: clamp(24px, 2.5vw, 30px);
+  color: var(--forest);
+}
+
+.newsletter-card > p {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.newsletter-card .opt-in-fields {
+  margin-top: 28px;
+}
+
+/* Lighter-weight success state, matching .closing-success on
+   /seasonal-menus — no need for a bordered card nested inside a card. */
+.newsletter-success {
+  display: none;
+  margin-top: 12px;
+}
+
+.newsletter-success.is-visible {
+  display: block;
+}
+
+.newsletter-success p:last-child {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Hero CTA row (button + text link side by side) */
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.hero-ctas .cta-button,
+.hero-ctas .link-underline {
+  margin-top: 0;
+}
+
 /* Footer */
 
 .site-footer {

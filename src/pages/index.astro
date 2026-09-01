@@ -10,7 +10,10 @@ import Layout from '../layouts/Layout.astro';
       <p class="eyebrow">Practical motherhood for a full house</p>
       <h1 id="hero-title" class="hero-title">Life with kids is messy.<br /><em>Let's make it meaningful.</em></h1>
       <p class="hero-lede">Simple rhythms for a meaningful, manageable home. I'm Lauren — mom to four in 2.5 years — sharing the small systems and mindset shifts that help our full house feel more peaceful.</p>
-      <a href="#about" class="link-underline">Read my story</a>
+      <div class="hero-ctas">
+        <a href="#newsletter" class="cta-button">Get the weekly note</a>
+        <a href="#about" class="link-underline">Read my story</a>
+      </div>
     </div>
     <div class="hero-media">
       <figure class="photo">
@@ -67,6 +70,41 @@ import Layout from '../layouts/Layout.astro';
     <p class="section-note">You don't need to do more. You need better rhythms that make room for what matters.</p>
   </section>
 
+  <section id="newsletter" class="newsletter">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">The weekly note</p>
+        <h2>A few things worth knowing, once a week.</h2>
+        <hr class="rule" />
+        <p class="lede">Every week I send a few things from around here: a system that's working, a rhythm we're trying, something that changed how I saw a hard moment. Short and specific. Five minutes to read. Nothing to keep up with.</p>
+        <ul class="belief-list">
+          <li>Written to one tired mother, not a list</li>
+          <li>A few short things, not a long read</li>
+          <li>Unsubscribe any week, no hard feelings</li>
+        </ul>
+      </div>
+      <div class="newsletter-card">
+        <h3>Join the weekly note.</h3>
+        <p id="newsletter-intro">Add your email and the next issue comes to you on Sunday.</p>
+
+        <form id="newsletter-form" class="opt-in-fields" novalidate>
+          <div class="opt-in-field">
+            <label for="newsletter-email">Email</label>
+            <input id="newsletter-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required />
+          </div>
+          <button type="submit" class="cta-button is-full">Send me the weekly note</button>
+          <p class="form-note">One email a week. No spam, no selling your address, unsubscribe anytime.</p>
+          <p class="form-note" role="status" aria-live="polite" id="newsletter-status"></p>
+        </form>
+
+        <div class="newsletter-success" id="newsletter-success">
+          <p class="eyebrow is-accent">You're in</p>
+          <p>The next weekly note lands in your inbox Sunday.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="about" class="section wrap" aria-labelledby="about-title">
     <div class="about-split">
       <div class="hero-media">
@@ -110,3 +148,43 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const status = document.getElementById('newsletter-status');
+  const success = document.getElementById('newsletter-success');
+  const intro = document.getElementById('newsletter-intro');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+    const email = emailInput.value.trim();
+
+    if (!email) {
+      if (status) status.textContent = 'Please enter your email.';
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitButton.disabled = true;
+    if (status) status.textContent = '';
+
+    // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
+    // which holds the Kit API key server-side — never in this client code.
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'newsletter' }),
+    }).catch((err) => {
+      console.error('Subscribe request failed:', err);
+    });
+
+    // Not form.hidden — .opt-in-fields sets display:flex in the stylesheet,
+    // which (being author CSS) overrides the browser's default
+    // [hidden] { display: none } regardless of selector specificity.
+    form.style.display = 'none';
+    if (intro) intro.style.display = 'none';
+    if (success) success.classList.add('is-visible');
+  });
+</script>
