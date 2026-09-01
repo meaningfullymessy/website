@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
+import portraitLargeImage from '../assets/images/portrait-large.jpg';
 ---
 <Layout
   title="Meaningfully Messy — Practical motherhood for a full house"
@@ -17,7 +20,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class="hero-media">
       <figure class="photo">
-        <img src="/assets/images/hero.jpg" width="580" height="724" alt="Lauren and her husband embraced by their four children in a garden" fetchpriority="high" />
+        <Image src={heroImage} alt="Lauren and her husband embraced by their four children in a garden" fetchpriority="high" loading="eager" />
       </figure>
       <blockquote class="pull-quote">
         <p>&ldquo;Four tiny humans call this place home.&rdquo;</p>
@@ -109,7 +112,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="about-split">
       <div class="hero-media">
         <figure class="photo">
-          <img src="/assets/images/portrait-large.jpg" width="700" height="875" alt="Portrait of Lauren smiling in her garden" loading="lazy" />
+          <Image src={portraitLargeImage} alt="Portrait of Lauren smiling in her garden" loading="lazy" />
         </figure>
       </div>
       <div>

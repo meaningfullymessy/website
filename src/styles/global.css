@@ -1,3 +1,35 @@
+/* Self-hosted (latin subset) rather than loaded from fonts.googleapis.com —
+   avoids a render-blocking request plus two extra origins (fonts.googleapis.com,
+   fonts.gstatic.com) on every page load. Files + OFL licenses in
+   public/assets/fonts/, pulled from Google Fonts' own CDN. Weight/style
+   ranges match what Google served for the same family/axis request; the
+   custom SOFT/WONK/opsz axes used via font-variation-settings below are
+   part of the variable font files themselves, not a CSS descriptor. */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url('/assets/fonts/archivo-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('/assets/fonts/fraunces-normal-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('/assets/fonts/fraunces-italic-latin.woff2') format('woff2');
+}
+
 :root {
   /* Brand v2 tokens — see brand-assets/meaningfully-messy-*-v2.html */
   --chalk: #FBF8F3;

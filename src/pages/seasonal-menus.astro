@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
+import portraitImage from '../assets/images/portrait.jpg';
 ---
 <Layout
   title="Stop Reinventing the Meal Plan — Meaningfully Messy"
@@ -34,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="hero-media">
       <figure class="photo">
-        <img src="/assets/images/hero.jpg" width="580" height="724" alt="A full house, mid-afternoon" />
+        <Image src={heroImage} alt="A full house, mid-afternoon" fetchpriority="high" loading="eager" />
       </figure>
       <blockquote class="pull-quote">
         <p>I don't want to spend their childhood deciding what's for dinner.</p>
@@ -85,7 +88,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="section is-compact wrap">
     <div class="about-lite">
       <figure class="avatar">
-        <img src="/assets/images/portrait.jpg" width="600" height="600" alt="Portrait of Lauren smiling" loading="lazy" />
+        <Image src={portraitImage} width={176} height={176} alt="Portrait of Lauren smiling" loading="lazy" />
       </figure>
       <div>
         <p class="eyebrow">Who's sending this</p>
