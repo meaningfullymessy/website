@@ -1327,7 +1327,8 @@ button.cta-button:disabled {
 .instagram-photo {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  max-width: 240px;
+  aspect-ratio: 1;
   border: 1px solid rgba(205, 210, 188, 0.24);
 }
 
