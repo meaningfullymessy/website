@@ -1036,6 +1036,19 @@ button.cta-button:disabled {
   aspect-ratio: 1;
 }
 
+/* Real product photos fill the same absolutely-positioned box the
+   placeholder used, across every photo slot on the shop pages (grid
+   tiles, the flagship feature, its two stacked picks). */
+.shop-tile-photo img,
+.shop-flagship-photo img,
+.shop-flagship-pick-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .shop-tile-name {
   font-size: 15px;
   line-height: 1.35;

@@ -2,31 +2,99 @@
 // Shared shop content for the two confirmation pages
 // (thank-you-newsletter.astro, thank-you-seasonal-menus.astro) — only the
 // confirmation headline above this differs between them.
+//
+// Product links are ShopMy tracking URLs (not plain retailer links) so
+// clicks are attributed back to Lauren's ShopMy account for commission
+// credit, per her ShopMy collections export. "View full collection" points
+// at the collections tab of her ShopMy shop — ShopMy doesn't expose a
+// separate deep link per collection in that export, so all four sections
+// share the same URL; a shopper lands there and picks the shelf they want.
 import ShopTile from './ShopTile.astro';
 
-// TODO: replace with the real per-collection ShopMy shelf URLs once Lauren
-// sends them (see chats/chat2.md) — every link below points at the general
-// shop page as a placeholder in the meantime.
-const SHOP_URL = 'https://shopmy.us/shop/meaningfullymessy';
+const COLLECTIONS_URL = 'https://shopmy.us/shop/meaningfullymessy?tab=collections&Section_id=4233372';
+
+const flagshipFeature = {
+  name: 'Branch Basics Starter Kit',
+  blurb: 'All-purpose cleaner starter kit, in glass',
+  href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81262026-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0D9WDDQ42%3Fref%3Dppx_yo2ov_dt_b_fed_asin_title%26tag%3Dshopmyshelf00-20',
+  image: 'https://static.shopmy.us/pins/zoom-81262026-1787532063461-31QwV3Ix-SL._AC_.jpg',
+};
+
+const flagshipPicks = [
+  {
+    name: 'Tineco Floor One Stretch S6',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81262952-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2FTineco-Floor-ONE-Stretch-Self-Cleaning%2Fdp%2FB0CVXLXGRP%2Fref%3Dsxin_19_pa_sp_search_thematic_sspa%3Ftag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81262952-1787532290037-41vwO3KY9kL._AC_.jpg',
+  },
+  {
+    name: 'O-Cedar EasyWring Spin Mop',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81263236-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB00WSWGVZQ%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_2%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81263236-1787532350243-51NkNmoUAKL._AC_.jpg',
+  },
+];
 
 const homeschoolItems = [
-  'Read-aloud basket',
-  'Wooden letter tiles',
-  'Morning-time binder',
-  'Watercolor set',
+  {
+    name: 'Liorque Visual Timer',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81258041-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0C3GQW2FP%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_1%26th%3D1%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81258041-1787531054176-41fgZTTDmyL._AC_.jpg',
+  },
+  {
+    name: 'Crayola Washable Crayons (64ct)',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81259102-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB07KY2HBCM%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_2%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-15307477-1743444542204-81ZF7DubIVL.__AC_SY300_SX300_QL70_ML2_.jpg',
+  },
+  {
+    name: 'Vusign Magnetic Dry Erase Board',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81258838-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2FVUSIGN-Magnetic-Whiteboard-Markers-Students%2Fdp%2FB0CZ3M7CBF%2Fref%3Dsxin_19_pa_sp_search_thematic_sspa%3Ftag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/pin-81258838-1787533457762-900.jpg',
+  },
+  {
+    name: 'Play-Doh Modeling Compound (36-Pack)',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81259937-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB00JM5GZGW%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_22%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81259937-1787531549398-51zNjTdB5XL._AC_.jpg',
+  },
 ];
 
 const homeItems = [
-  'Stoneware pitcher',
-  'Linen table runner',
-  'Woven storage baskets',
-  'Simple wall hooks',
+  {
+    name: 'Woven Nook Gingham Ruffle Pillow (Navy)',
+    href: 'https://www.awin1.com/awclick.php?mid=93663&id=740219&clickref=user-1085819-pin-81271613-puser-null-src-web&ued=https%3A%2F%2Fwovennook.com%2Fproducts%2Fnavy-blue-gingham-ruffle',
+    image: 'https://static.shopmy.us/pins/zoom-81271613-1787534599018-navygingham.jpg',
+  },
+  {
+    name: 'Loloi x Chris Loves Julia Runner Rug',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81272645-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0DHSRCCMR%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_3%26th%3D1%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81272645-1787534883475-51rTPbqaomL._AC_.jpg',
+  },
+  {
+    name: 'SpaceAid Toy Storage Organizer',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81272860-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0DZXL2QTQ%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_10%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81272860-1787534943007-512d7V1js5L._AC_.jpg',
+  },
+  {
+    name: 'Luxenhome Round Coffee Table',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81272730-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0DXK5NSLQ%2Fref%3Dnosim%3Fref_%3Dppx_hzsearch_conn_dt_b_fed_asin_title_6%26th%3D1%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81272730-1787534907114-51sYEdPPa4L._AC_.jpg',
+  },
 ];
 
 const momItems = [
-  'Everyday face balm',
-  'The one lip color I re-buy',
-  'Magnesium lotion',
+  {
+    name: 'Whipped Tallow Balm',
+    href: 'https://r.amzlink.to/?btn_ref=org-5c1708b96da5502d&btn_pub_ref=user-1085819-pin-81262332-puser-null-src-web&btn_url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0F8644Y5M%3Fref%3Dppx_yo2ov_dt_b_fed_asin_title%26tag%3Dshopmyshelf00-20',
+    image: 'https://static.shopmy.us/pins/zoom-81262332-1787532136241-418Q4X9l6wL._AC_.jpg',
+  },
+  {
+    name: 'Merit Beauty Flush Balm Blush',
+    href: 'https://apiv3.shopmy.us/api/redirect_click?clickId=10ddf050-a837-4fb2-8bc0-c25bde4e7dba&cid=user-1085819-pin-81264073-puser-null-src-web&url=https%3A%2F%2Fwww.meritbeauty.com%2Fproducts%2Fflush-balm%3Futm_source%3DInfluencer%26utm_medium%3Daffiliate%26utm_campaign%3DLauren%2520Messmer%26utm_content%3DMom%2520Favorites%26utm_referrer%3Dshopmy.us',
+    image: 'https://static.shopmy.us/uploads/pretty-prod-1786388077095',
+  },
+  {
+    name: 'Merit Beauty Clean Lash Mascara',
+    href: 'https://apiv3.shopmy.us/api/redirect_click?clickId=627d6375-352a-421f-9766-2b8b73b1bc91&cid=user-1085819-pin-81263706-puser-null-src-web&url=https%3A%2F%2Fwww.meritbeauty.com%2Fproducts%2Fclean-lash%3Fshop_sign_in%3Dtrue%26variant%3D36369081761949%26utm_source%3DInfluencer%26utm_medium%3Daffiliate%26utm_campaign%3DLauren%2520Messmer%26utm_content%3DMom%2520Favorites%26utm_referrer%3Dshopmy.us',
+    image: 'https://static.shopmy.us/uploads/pretty-prod-1776615210254',
+  },
 ];
 
 const readingItems = [
@@ -41,32 +109,28 @@ const readingItems = [
       <p class="shop-kicker is-flagship">01 · Flagship</p>
       <h2 id="flagship-heading">Our home systems</h2>
     </div>
-    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+    <a class="cta-button is-small" href={COLLECTIONS_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
   </div>
 
   <div class="shop-flagship">
-    <a class="shop-flagship-feature" href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+    <a class="shop-flagship-feature" href={flagshipFeature.href} target="_blank" rel="noopener noreferrer">
       <div class="shop-flagship-photo">
-        <div class="shop-placeholder"><span>Flagship system photo</span></div>
+        <img src={flagshipFeature.image} alt={flagshipFeature.name} loading="lazy" decoding="async" />
       </div>
       <div class="shop-flagship-info">
-        <span class="shop-flagship-name">The nightly reset kit</span>
-        <p class="shop-flagship-blurb">Basket, timer, chore cards — one lap of the house</p>
+        <span class="shop-flagship-name">{flagshipFeature.name}</span>
+        <p class="shop-flagship-blurb">{flagshipFeature.blurb}</p>
       </div>
     </a>
     <div class="shop-flagship-picks">
-      <a class="shop-flagship-pick" href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-        <div class="shop-flagship-pick-photo">
-          <div class="shop-placeholder"><span>Product photo</span></div>
-        </div>
-        <span class="shop-flagship-pick-name">Laundry sorting bins</span>
-      </a>
-      <a class="shop-flagship-pick" href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-        <div class="shop-flagship-pick-photo">
-          <div class="shop-placeholder"><span>Product photo</span></div>
-        </div>
-        <span class="shop-flagship-pick-name">Morning routine chart</span>
-      </a>
+      {flagshipPicks.map((pick) => (
+        <a class="shop-flagship-pick" href={pick.href} target="_blank" rel="noopener noreferrer">
+          <div class="shop-flagship-pick-photo">
+            <img src={pick.image} alt={pick.name} loading="lazy" decoding="async" />
+          </div>
+          <span class="shop-flagship-pick-name">{pick.name}</span>
+        </a>
+      ))}
     </div>
   </div>
 </section>
@@ -77,10 +141,10 @@ const readingItems = [
       <p class="shop-kicker">02</p>
       <h2 id="homeschool-heading">Homeschool favorites</h2>
     </div>
-    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+    <a class="cta-button is-small" href={COLLECTIONS_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
   </div>
   <div class="shop-grid is-cols-4">
-    {homeschoolItems.map((name) => <ShopTile name={name} href={SHOP_URL} />)}
+    {homeschoolItems.map((item) => <ShopTile name={item.name} href={item.href} image={item.image} />)}
   </div>
 </section>
 
@@ -90,10 +154,10 @@ const readingItems = [
       <p class="shop-kicker">03</p>
       <h2 id="home-heading">Home favorites</h2>
     </div>
-    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+    <a class="cta-button is-small" href={COLLECTIONS_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
   </div>
   <div class="shop-grid is-cols-4">
-    {homeItems.map((name) => <ShopTile name={name} href={SHOP_URL} />)}
+    {homeItems.map((item) => <ShopTile name={item.name} href={item.href} image={item.image} />)}
   </div>
 </section>
 
@@ -103,10 +167,10 @@ const readingItems = [
       <p class="shop-kicker">04</p>
       <h2 id="mom-heading">Mom favorites</h2>
     </div>
-    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+    <a class="cta-button is-small" href={COLLECTIONS_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
   </div>
   <div class="shop-grid is-cols-3">
-    {momItems.map((name) => <ShopTile name={name} href={SHOP_URL} />)}
+    {momItems.map((item) => <ShopTile name={item.name} href={item.href} image={item.image} />)}
   </div>
 </section>
 

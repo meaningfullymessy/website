@@ -2,13 +2,18 @@
 interface Props {
   name: string;
   href: string;
+  image?: string | null;
 }
 
-const { name, href } = Astro.props;
+const { name, href, image = null } = Astro.props;
 ---
 <a class="shop-tile" href={href} target="_blank" rel="noopener noreferrer">
   <div class="shop-tile-photo">
-    <div class="shop-placeholder"><span>Product photo</span></div>
+    {image ? (
+      <img src={image} alt={name} loading="lazy" decoding="async" />
+    ) : (
+      <div class="shop-placeholder"><span>Product photo</span></div>
+    )}
   </div>
   <span class="shop-tile-name">{name}</span>
   <span class="shop-tile-retailer">ShopMy</span>

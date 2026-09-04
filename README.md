@@ -72,8 +72,11 @@ On success each form navigates to a confirmation+shop page —
 `/thank-you-newsletter` or `/thank-you-seasonal-menus` — which confirms the
 signup and surfaces a curated set of product recommendations (source
 content in `src/components/ShopRecommendations.astro`, shared by both
-pages). Product photos and ShopMy links there are placeholders; see the
-`TODO` at the top of that file.
+pages). Products, photos, and ShopMy tracking links there are pulled from
+Lauren's ShopMy collections export — update the arrays in that file
+directly when her picks change. "View full collection" on every section
+points at the same ShopMy collections-tab URL, since ShopMy doesn't expose
+a separate deep link per collection.
 
 It requires these Cloudflare Pages environment variables (dashboard → this
 project → Settings → Environment variables → set for Production, as
