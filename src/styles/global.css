@@ -1346,6 +1346,10 @@ button.cta-button:disabled {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* portrait-large.jpg is a 4:5 headshot cropped into a much wider 16:10
+     box — centering vertically cuts off the top of her head, so bias the
+     crop upward to keep the face fully in frame. */
+  object-position: center 15%;
 }
 
 .affiliate-note {
