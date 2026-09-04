@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import ShopRecommendations from '../components/ShopRecommendations.astro';
 import { Image } from 'astro:assets';
-import heroImage from '../assets/images/hero.jpg';
 import portraitImage from '../assets/images/portrait.jpg';
+import portraitLargeImage from '../assets/images/portrait-large.jpg';
 ---
 <Layout
   title="You're in — Meaningfully Messy"
@@ -13,7 +13,7 @@ import portraitImage from '../assets/images/portrait.jpg';
     <div>
       <hr class="kicker-rule" />
       <h1 id="confirm-heading" class="hero-title is-compact">You're in — and I'm glad you're here.</h1>
-      <p class="hero-lede">The weekly note is in your inbox in a minute or two. Every week I send a few short things from around here — a system that's working, a rhythm we're trying, a fresh perspective on a hard moment. Five minutes to read, nothing to keep up with.</p>
+      <p class="hero-lede">Keep an eye on your inbox — your first note is on its way. While you wait, take a look through what's below: the systems, favorites, and shelf picks that actually earn their place in our house.</p>
       <div class="confirm-signoff">
         <Image src={portraitImage} width={104} height={104} alt="Lauren" />
         <span>Lauren</span>
@@ -21,7 +21,7 @@ import portraitImage from '../assets/images/portrait.jpg';
     </div>
     <div class="hero-media">
       <figure class="photo">
-        <Image src={heroImage} alt="Lauren's family in the garden" loading="eager" fetchpriority="high" />
+        <Image src={portraitLargeImage} alt="Portrait of Lauren smiling in her garden" loading="eager" fetchpriority="high" />
       </figure>
     </div>
   </section>

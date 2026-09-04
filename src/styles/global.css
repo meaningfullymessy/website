@@ -923,9 +923,8 @@ button.cta-button:disabled {
   padding-top: clamp(56px, 7vw, 88px);
 }
 
-/* Small uppercase monospace label above a shop section heading — same
-   family as .card-number, reused here for section numbering ("01 ·
-   Flagship", "02", ...). */
+/* Small uppercase monospace label — same family as .card-number, used
+   above the "What I'm reading" aside. */
 .shop-kicker {
   margin: 0;
   font-family: ui-monospace, Menlo, monospace;
@@ -933,10 +932,6 @@ button.cta-button:disabled {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--stone-700);
-}
-
-.shop-kicker.is-flagship {
-  color: var(--clay);
 }
 
 .shop-head {
@@ -949,7 +944,7 @@ button.cta-button:disabled {
 }
 
 .shop-head h2 {
-  margin: 10px 0 0;
+  margin: 0;
   font-family: var(--font-serif);
   font-variation-settings: "SOFT" 34, "WONK" 1, "opsz" 84;
   font-weight: 600;
