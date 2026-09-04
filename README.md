@@ -68,6 +68,12 @@ npm uninstall playwright
 The homepage newsletter form and the `/seasonal-menus` lead-magnet forms all
 POST to `functions/api/subscribe.js`, a Cloudflare Pages Function that talks
 to the Kit API server-side, so the Kit API key never reaches the browser.
+On success each form navigates to a confirmation+shop page —
+`/thank-you-newsletter` or `/thank-you-seasonal-menus` — which confirms the
+signup and surfaces a curated set of product recommendations (source
+content in `src/components/ShopRecommendations.astro`, shared by both
+pages). Product photos and ShopMy links there are placeholders; see the
+`TODO` at the top of that file.
 
 It requires these Cloudflare Pages environment variables (dashboard → this
 project → Settings → Environment variables → set for Production, as

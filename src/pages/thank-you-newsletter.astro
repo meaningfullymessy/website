@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ShopRecommendations from '../components/ShopRecommendations.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
+import portraitImage from '../assets/images/portrait.jpg';
+---
+<Layout
+  title="You're in — Meaningfully Messy"
+  description="Thanks for joining the weekly note. While your first issue lands, here's what actually gets used around our house."
+>
+  <section class="hero wrap" aria-labelledby="confirm-heading">
+    <div>
+      <hr class="kicker-rule" />
+      <h1 id="confirm-heading" class="hero-title is-compact">You're in — and I'm glad you're here.</h1>
+      <p class="hero-lede">The weekly note is in your inbox in a minute or two. Every week I send a few short things from around here — a system that's working, a rhythm we're trying, a fresh perspective on a hard moment. Five minutes to read, nothing to keep up with.</p>
+      <div class="confirm-signoff">
+        <Image src={portraitImage} width={52} height={52} alt="Lauren" />
+        <span>Lauren</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <figure class="photo">
+        <Image src={heroImage} alt="Lauren's family in the garden" loading="eager" fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <ShopRecommendations />
+</Layout>

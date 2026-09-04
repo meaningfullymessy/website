@@ -27,12 +27,6 @@ import portraitImage from '../assets/images/portrait.jpg';
         <p class="form-note">Free instant download. Unsubscribe anytime.</p>
         <p class="form-note" role="status" aria-live="polite" id="hero-status"></p>
       </form>
-
-      <div class="success-panel" id="hero-success">
-        <p class="eyebrow is-accent">Here you go</p>
-        <p>Your menus are ready — print them, stick them inside a cabinet door, and start at the top.</p>
-        <a class="cta-button" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
-      </div>
     </div>
 
     <div class="hero-media">
@@ -109,18 +103,14 @@ import portraitImage from '../assets/images/portrait.jpg';
           <input id="closing-email" name="email" type="email" placeholder="Email address" autocomplete="email" required class="is-centered" />
         </div>
         <button type="submit" class="cta-button is-full">Get both menus</button>
+        <p class="form-note" role="status" aria-live="polite" id="closing-status"></p>
       </form>
-
-      <div class="closing-success" id="closing-success">
-        <p class="signature">Ready — go print it.</p>
-        <a class="link-underline" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
-      </div>
     </div>
   </section>
 </Layout>
 
 <script>
-  function wireOptInForm(formEl: HTMLFormElement | null, statusEl: HTMLElement | null, successEl: HTMLElement | null, source: string) {
+  function wireOptInForm(formEl: HTMLFormElement | null, statusEl: HTMLElement | null, source: string) {
     if (!formEl) return;
 
     formEl.addEventListener('submit', (event) => {
@@ -142,35 +132,35 @@ import portraitImage from '../assets/images/portrait.jpg';
 
       // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
       // which holds the Kit API key server-side — never in this client code.
-      // Fired and not awaited on purpose: the visitor still gets their PDF
-      // even if this call fails or is slow — the download isn't gated on it.
+      // Awaited, then navigates to the confirmation+shop page — a failed
+      // subscribe surfaces here instead of sending someone to a "your menu
+      // is on its way" page they never actually joined from.
       fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, first_name: firstName, source }),
-      }).catch((err) => {
-        console.error('Subscribe request failed:', err);
-      });
-
-      // Not formEl.hidden — .opt-in-fields sets display:flex in the
-      // stylesheet, which (being author CSS) overrides the browser's
-      // default [hidden] { display: none } regardless of selector specificity.
-      formEl.style.display = 'none';
-      if (successEl) successEl.classList.add('is-visible');
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error(`subscribe failed: ${res.status}`);
+          window.location.href = '/thank-you-seasonal-menus';
+        })
+        .catch((err) => {
+          console.error('Subscribe request failed:', err);
+          submitButton.disabled = false;
+          if (statusEl) statusEl.textContent = 'Something went wrong — please try again.';
+        });
     });
   }
 
   wireOptInForm(
     document.getElementById('hero-form') as HTMLFormElement,
     document.getElementById('hero-status'),
-    document.getElementById('hero-success'),
     'seasonal-menus'
   );
 
   wireOptInForm(
     document.getElementById('closing-form') as HTMLFormElement,
-    null,
-    document.getElementById('closing-success'),
+    document.getElementById('closing-status'),
     'seasonal-menus'
   );
 </script>

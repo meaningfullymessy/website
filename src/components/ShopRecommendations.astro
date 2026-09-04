@@ -1,0 +1,137 @@
+---
+// Shared "while you wait" shop content for the two confirmation pages
+// (thank-you-newsletter.astro, thank-you-seasonal-menus.astro) — only the
+// confirmation headline above this differs between them.
+import ShopTile from './ShopTile.astro';
+
+// TODO: replace with the real per-collection ShopMy shelf URLs once Lauren
+// sends them (see chats/chat2.md) — every link below points at the general
+// shop page as a placeholder in the meantime.
+const SHOP_URL = 'https://shopmy.us/shop/meaningfullymessy';
+
+const homeschoolItems = [
+  'Read-aloud basket',
+  'Wooden letter tiles',
+  'Morning-time binder',
+  'Watercolor set',
+];
+
+const homeItems = [
+  'Stoneware pitcher',
+  'Linen table runner',
+  'Woven storage baskets',
+  'Simple wall hooks',
+];
+
+const momItems = [
+  'Everyday face balm',
+  'The one lip color I re-buy',
+  'Magnesium lotion',
+];
+
+const readingItems = [
+  'Teaching from Rest — placeholder title',
+  'A novel I keep by the bed',
+  'Our current family read-aloud',
+];
+---
+<p class="shop-intro wrap">While you wait — the things that actually get used in our house.</p>
+
+<section class="shop-section wrap" aria-labelledby="flagship-heading">
+  <div class="shop-head is-flagship">
+    <div>
+      <p class="shop-kicker is-flagship">01 · Flagship</p>
+      <h2 id="flagship-heading">Our home systems</h2>
+    </div>
+    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+  </div>
+
+  <div class="shop-flagship">
+    <a class="shop-flagship-feature" href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+      <div class="shop-flagship-photo">
+        <div class="shop-placeholder"><span>Flagship system photo</span></div>
+      </div>
+      <div class="shop-flagship-info">
+        <span class="shop-flagship-name">The nightly reset kit</span>
+        <p class="shop-flagship-blurb">Basket, timer, chore cards — one lap of the house</p>
+      </div>
+    </a>
+    <div class="shop-flagship-picks">
+      <a class="shop-flagship-pick" href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+        <div class="shop-flagship-pick-photo">
+          <div class="shop-placeholder"><span>Product photo</span></div>
+        </div>
+        <span class="shop-flagship-pick-name">Laundry sorting bins</span>
+      </a>
+      <a class="shop-flagship-pick" href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+        <div class="shop-flagship-pick-photo">
+          <div class="shop-placeholder"><span>Product photo</span></div>
+        </div>
+        <span class="shop-flagship-pick-name">Morning routine chart</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="shop-section wrap" aria-labelledby="homeschool-heading">
+  <div class="shop-head">
+    <div>
+      <p class="shop-kicker">02</p>
+      <h2 id="homeschool-heading">Homeschool favorites</h2>
+    </div>
+    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+  </div>
+  <div class="shop-grid is-cols-4">
+    {homeschoolItems.map((name) => <ShopTile name={name} href={SHOP_URL} />)}
+  </div>
+</section>
+
+<section class="shop-section wrap" aria-labelledby="home-heading">
+  <div class="shop-head">
+    <div>
+      <p class="shop-kicker">03</p>
+      <h2 id="home-heading">Home favorites</h2>
+    </div>
+    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+  </div>
+  <div class="shop-grid is-cols-4">
+    {homeItems.map((name) => <ShopTile name={name} href={SHOP_URL} />)}
+  </div>
+</section>
+
+<section class="shop-section wrap" aria-labelledby="mom-heading">
+  <div class="shop-head">
+    <div>
+      <p class="shop-kicker">04</p>
+      <h2 id="mom-heading">Mom favorites</h2>
+    </div>
+    <a class="cta-button is-small" href={SHOP_URL} target="_blank" rel="noopener noreferrer">View full collection<span aria-hidden="true"> →</span></a>
+  </div>
+  <div class="shop-grid is-cols-3">
+    {momItems.map((name) => <ShopTile name={name} href={SHOP_URL} />)}
+  </div>
+</section>
+
+<div class="reading-band wrap">
+  <div>
+    <p class="shop-kicker">What I'm reading</p>
+    <p class="reading-tagline">Four pages a night, most nights.</p>
+  </div>
+  <ul class="dash-list">
+    {readingItems.map((title) => <li>{title}</li>)}
+  </ul>
+</div>
+
+<section class="instagram-band">
+  <div class="wrap">
+    <div>
+      <p class="lede-title">Most days, the rhythms show up on Instagram first.</p>
+      <p class="lede-copy">Come find me there — I'd love to know which part of your evening feels hardest.</p>
+      <a class="cta-button is-outline" href="https://www.instagram.com/meaningfullymessy" target="_blank" rel="noopener noreferrer">@meaningfullymessy</a>
+    </div>
+    <div class="instagram-photo">
+      <div class="shop-placeholder"><span>Instagram photo</span></div>
+    </div>
+    <p class="affiliate-note">Some links are affiliate links — I only ever share what's already in our house.</p>
+  </div>
+</section>

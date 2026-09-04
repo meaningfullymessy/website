@@ -315,12 +315,6 @@ button.cta-button:disabled {
   color: var(--forest);
 }
 
-/* Accent-tone eyebrow (e.g. a success-state label), in place of the default
-   muted stone-700. */
-.eyebrow.is-accent {
-  color: var(--olive);
-}
-
 /* Full-width button variant, for forms where the button should span the
    input column rather than size to its own text. */
 .cta-button.is-full {
@@ -398,29 +392,6 @@ button.cta-button:disabled {
   margin-top: 0;
 }
 
-.closing-cta .success-panel {
-  text-align: center;
-  max-width: 420px;
-}
-
-/* Lighter-weight success state for the closing CTA — a signature-style line
-   plus a text link, rather than the hero's full bordered card. */
-.closing-success {
-  display: none;
-}
-
-.closing-success.is-visible {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.closing-success .signature,
-.closing-success .link-underline {
-  margin-top: 0;
-}
-
 /* Visually hidden but still readable by screen readers — used for form
    labels where the input's placeholder already carries the visible cue. */
 .sr-only {
@@ -453,34 +424,6 @@ button.cta-button:disabled {
 .form-note {
   font-size: 13px;
   color: var(--stone-700);
-}
-
-.success-panel {
-  display: none;
-  background: var(--chalk);
-  border: 1px solid var(--linen);
-  padding: clamp(28px, 3.4vw, 44px);
-  margin-top: 34px;
-}
-
-.success-panel.is-visible {
-  display: block;
-}
-
-.success-panel h2 {
-  margin: 0 0 12px;
-  font-family: var(--font-serif);
-  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 48;
-  font-weight: 600;
-  font-size: clamp(24px, 2.5vw, 30px);
-  color: var(--forest);
-}
-
-.success-panel p {
-  margin: 0 0 20px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--brown);
 }
 
 .photo {
@@ -883,23 +826,6 @@ button.cta-button:disabled {
   margin-top: 28px;
 }
 
-/* Lighter-weight success state, matching .closing-success on
-   /seasonal-menus — no need for a bordered card nested inside a card. */
-.newsletter-success {
-  display: none;
-  margin-top: 12px;
-}
-
-.newsletter-success.is-visible {
-  display: block;
-}
-
-.newsletter-success p:last-child {
-  margin: 8px 0 0;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
 /* Hero CTA row (button + text link side by side) */
 .hero-ctas {
   display: flex;
@@ -963,4 +889,440 @@ button.cta-button:disabled {
   margin: clamp(32px, 4vw, 48px) 0 0;
   font-size: 13px;
   color: var(--stone-700);
+}
+
+/* Confirmation + shop (thank-you-newsletter, thank-you-seasonal-menus) */
+
+/* Small avatar + italic name, next to the confirmation headline — lighter
+   than .about-lite (no bio copy, just a signoff). */
+.confirm-signoff {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.confirm-signoff img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--linen);
+}
+
+.confirm-signoff span {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 72;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--olive);
+}
+
+.shop-intro {
+  margin: clamp(40px, 6vw, 64px) auto 0;
+  max-width: 46ch;
+  font-size: 15px;
+  color: var(--stone-700);
+}
+
+.shop-section {
+  padding-top: clamp(56px, 7vw, 88px);
+}
+
+/* Small uppercase monospace label above a shop section heading — same
+   family as .card-number, reused here for section numbering ("01 ·
+   Flagship", "02", ...). */
+.shop-kicker {
+  margin: 0;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone-700);
+}
+
+.shop-kicker.is-flagship {
+  color: var(--clay);
+}
+
+.shop-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  margin-bottom: clamp(22px, 3vw, 30px);
+}
+
+.shop-head h2 {
+  margin: 10px 0 0;
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 34, "WONK" 1, "opsz" 84;
+  font-weight: 600;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+}
+
+.shop-head.is-flagship h2 {
+  font-size: clamp(29px, 3.4vw, 44px);
+  line-height: 1.07;
+  letter-spacing: -0.024em;
+}
+
+/* Pill CTA sized for a section head rather than a hero — same treatment as
+   .cta-button, just smaller and inline rather than block/margin-topped. */
+.cta-button.is-small {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 13.5px;
+}
+
+/* Border-only variant for use on a dark panel (the closing Instagram band),
+   where a filled olive pill would fight the photo next to it. */
+.cta-button.is-outline {
+  background: transparent;
+  border: 1px solid rgba(205, 210, 188, 0.24);
+  color: var(--chalk);
+}
+
+.cta-button.is-outline:hover,
+.cta-button.is-outline:focus-visible {
+  background: transparent;
+  border-color: var(--sage-400);
+  color: var(--sage-200);
+}
+
+/* Product grid — hairline Linen gaps between Chalk cells, same "shelf"
+   vocabulary as .cards-grid but sized for product photo + name tiles. */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--linen);
+  border: 1px solid var(--linen);
+}
+
+@media (min-width: 640px) {
+  .shop-grid.is-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .shop-grid.is-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.shop-tile {
+  position: relative;
+  background: var(--chalk);
+  padding: 16px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--forest);
+  transition: box-shadow 150ms ease, transform 200ms ease;
+}
+
+.shop-tile:hover,
+.shop-tile:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 45, 24, 0.15);
+  z-index: 1;
+}
+
+.shop-tile-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.shop-tile-name {
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--forest);
+}
+
+/* Small retailer credit under a product name — kept quiet (monospace,
+   stone-700) so the page still reads as a personal shelf, not a catalog. */
+.shop-tile-retailer {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--stone-700);
+}
+
+/* Placeholder product photo — flat Linen box with a caption, standing in
+   for real product photography until it's shot/sourced. */
+.shop-placeholder {
+  position: absolute;
+  inset: 0;
+  background: var(--linen);
+  border: 1px solid var(--stone-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+}
+
+.shop-placeholder span {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--stone-700);
+}
+
+/* Flagship feature — the "Our home systems" section gets a large photo
+   tile plus two stacked picks, instead of the plain grid used elsewhere,
+   so it reads with more visual weight as the page's lead recommendation. */
+.shop-flagship {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--linen);
+  border: 1px solid var(--linen);
+}
+
+@media (min-width: 800px) {
+  .shop-flagship {
+    grid-template-columns: 1.25fr 1fr;
+  }
+}
+
+.shop-flagship-feature {
+  position: relative;
+  background: var(--chalk);
+  display: flex;
+  flex-direction: column;
+  color: var(--forest);
+  transition: box-shadow 150ms ease, transform 200ms ease;
+}
+
+.shop-flagship-feature:hover,
+.shop-flagship-feature:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 45, 24, 0.15);
+  z-index: 1;
+}
+
+.shop-flagship-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 800px) {
+  .shop-flagship-photo {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.shop-flagship-info {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shop-flagship-name {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 34, "WONK" 1, "opsz" 60;
+  font-weight: 500;
+  font-size: 21px;
+  color: var(--forest);
+}
+
+.shop-flagship-blurb {
+  margin: 0;
+  font-size: 15px;
+  color: var(--stone-700);
+}
+
+.shop-flagship-picks {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: var(--linen);
+}
+
+.shop-flagship-pick {
+  position: relative;
+  background: var(--chalk);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  color: var(--forest);
+  transition: box-shadow 150ms ease, transform 200ms ease;
+}
+
+.shop-flagship-pick:hover,
+.shop-flagship-pick:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 45, 24, 0.15);
+  z-index: 1;
+}
+
+.shop-flagship-pick-photo {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 800px) {
+  .shop-flagship-pick-photo {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.shop-flagship-pick-name {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 34, "WONK" 1, "opsz" 48;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--forest);
+}
+
+/* Recessed "What I'm reading" aside — deliberately light-touch (a Linen
+   band, no photos) since it's a personal note, not another shop section. */
+.reading-band {
+  margin-top: clamp(56px, 7vw, 88px);
+  background: var(--linen);
+  padding: clamp(28px, 3.4vw, 40px) clamp(24px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 700px) {
+  .reading-band {
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+.reading-tagline {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 72;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.35;
+  color: var(--olive);
+  margin: 10px 0 0;
+}
+
+/* Dash-marker list — same shape as .belief-list but with a short rule
+   instead of a checkmark, for a lighter, non-affirmational list (book
+   titles rather than beliefs). */
+.dash-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 15.5px;
+  color: var(--brown);
+}
+
+.dash-list li {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.dash-list li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 1.5px;
+  background: var(--olive);
+  transform: translateY(-5px);
+}
+
+/* Closing Instagram band — same dark-panel treatment as .brand-truth
+   (Brown background) but with its own two-column shape: an italic
+   pull-line + outline CTA beside a photo, plus the affiliate disclosure
+   that covers every product link above it on the page. */
+.instagram-band {
+  margin-top: clamp(64px, 8vw, 96px);
+  background: var(--brown);
+  color: var(--sage-200);
+  padding: clamp(48px, 7vw, 76px) 0 clamp(44px, 6vw, 60px);
+}
+
+.instagram-band .wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .instagram-band .wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+}
+
+.instagram-band .lede-title {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 84;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.28;
+  color: var(--chalk);
+  margin: 0;
+  max-width: 24ch;
+}
+
+.instagram-band p.lede-copy {
+  margin: 18px 0 26px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--sage-200);
+  max-width: 40ch;
+}
+
+.instagram-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(205, 210, 188, 0.24);
+}
+
+.instagram-photo .shop-placeholder {
+  background: transparent;
+  border: none;
+}
+
+.instagram-photo .shop-placeholder span {
+  color: var(--sage-400);
+}
+
+.affiliate-note {
+  margin: clamp(32px, 5vw, 48px) 0 0;
+  font-size: 13px;
+  color: var(--sage-400);
+}
+
+@media (min-width: 700px) {
+  .affiliate-note {
+    grid-column: 1 / -1;
+  }
 }

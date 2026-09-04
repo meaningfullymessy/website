@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ShopRecommendations from '../components/ShopRecommendations.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
+import portraitImage from '../assets/images/portrait.jpg';
+---
+<Layout
+  title="Your seasonal menu is on its way — Meaningfully Messy"
+  description="Thanks for grabbing the seasonal menu. While it lands in your inbox, here's what actually gets used around our house."
+>
+  <section class="hero wrap" aria-labelledby="confirm-heading">
+    <div>
+      <hr class="kicker-rule" />
+      <h1 id="confirm-heading" class="hero-title is-compact">The seasonal menu is on its way.</h1>
+      <p class="hero-lede">Check your inbox in a minute or two — it's the same four weeks of dinners we're actually eating this season, grocery list included.</p>
+      <a class="link-underline" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Or download the printable now (PDF)</a>
+      <div class="confirm-signoff">
+        <Image src={portraitImage} width={52} height={52} alt="Lauren" />
+        <span>Lauren</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <figure class="photo">
+        <Image src={heroImage} alt="Lauren's family in the garden" loading="eager" fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <ShopRecommendations />
+</Layout>
