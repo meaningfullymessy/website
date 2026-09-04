@@ -10,6 +10,17 @@
 // separate deep link per collection in that export, so all four sections
 // share the same URL; a shopper lands there and picks the shelf they want.
 import ShopTile from './ShopTile.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  // Photo for the closing Instagram-band slot. Optional — pages that don't
+  // have a spare photo for it (e.g. thank-you-seasonal-menus, whose hero
+  // photo is still doing duty up top) fall back to the placeholder box.
+  instagramImage?: ImageMetadata;
+}
+
+const { instagramImage } = Astro.props;
 
 const COLLECTIONS_URL = 'https://shopmy.us/shop/meaningfullymessy?tab=collections&Section_id=4233372';
 
@@ -215,7 +226,11 @@ const readingItems = [
       <a class="cta-button is-outline" href="https://www.instagram.com/meaningfullymessy" target="_blank" rel="noopener noreferrer">@meaningfullymessy</a>
     </div>
     <div class="instagram-photo">
-      <div class="shop-placeholder"><span>Instagram photo</span></div>
+      {instagramImage ? (
+        <Image src={instagramImage} alt="Lauren" />
+      ) : (
+        <div class="shop-placeholder"><span>Instagram photo</span></div>
+      )}
     </div>
     <p class="affiliate-note">Some links are affiliate links — I only ever share what's already in our house.</p>
   </div>

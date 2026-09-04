@@ -433,11 +433,18 @@ button.cta-button:disabled {
   margin: 0;
 }
 
-.photo img {
+.photo img,
+.photo svg {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Square variant, for a graphic (not a 4:5 photo) in the hero-media slot —
+   e.g. the envelope illustration on /thank-you-newsletter. */
+.photo.is-square {
+  aspect-ratio: 1;
 }
 
 .hero-media {
@@ -1331,6 +1338,14 @@ button.cta-button:disabled {
 
 .instagram-photo .shop-placeholder span {
   color: var(--sage-400);
+}
+
+.instagram-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .affiliate-note {
