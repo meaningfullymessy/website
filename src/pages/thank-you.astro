@@ -7,6 +7,7 @@
 // actually landed on.
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
 import portraitImage from '../assets/images/portrait.jpg';
 import ShopShelf from '../components/ShopShelf.astro';
 ---
@@ -15,16 +16,24 @@ import ShopShelf from '../components/ShopShelf.astro';
   description="Thanks for joining the weekly note from Meaningfully Messy."
   noindex={true}
 >
-  <section class="confirm-hero wrap">
-    <p class="eyebrow is-accent">You're in</p>
-    <h1 class="hero-title is-compact">You're in — and I'm glad you're here.</h1>
-    <p class="hero-lede">The next weekly note lands in your inbox soon. Every week: a system that's working, a rhythm we're trying, a fresh perspective on a hard moment. Five minutes to read, nothing to keep up with.</p>
+  <section class="hero wrap" aria-labelledby="confirm-title">
+    <div>
+      <p class="eyebrow is-accent">You're in</p>
+      <h1 id="confirm-title" class="hero-title is-compact">You're in — and I'm glad you're here.</h1>
+      <p class="hero-lede">The next weekly note lands in your inbox soon. Every week: a system that's working, a rhythm we're trying, a fresh perspective on a hard moment. Five minutes to read, nothing to keep up with.</p>
 
-    <div class="confirm-credit">
-      <figure class="avatar">
-        <Image src={portraitImage} width={88} height={88} alt="Portrait of Lauren smiling" loading="eager" />
+      <div class="confirm-credit">
+        <figure class="avatar">
+          <Image src={portraitImage} width={88} height={88} alt="Portrait of Lauren smiling" loading="eager" />
+        </figure>
+        <span>Lauren</span>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <figure class="photo">
+        <Image src={heroImage} alt="Lauren's family in the garden" loading="eager" />
       </figure>
-      <span>Lauren</span>
     </div>
   </section>
 

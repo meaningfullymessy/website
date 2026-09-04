@@ -4,6 +4,7 @@
 // static page rather than one page branching on a query param.
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
 import portraitImage from '../assets/images/portrait.jpg';
 import ShopShelf from '../components/ShopShelf.astro';
 ---
@@ -12,21 +13,29 @@ import ShopShelf from '../components/ShopShelf.astro';
   description="Your seasonal menus printable is ready to download."
   noindex={true}
 >
-  <section class="confirm-hero wrap">
-    <p class="eyebrow is-accent">Here you go</p>
-    <h1 class="hero-title is-compact">Your menus are ready.</h1>
-    <p class="hero-lede">Print them, stick them inside a cabinet door, and start at the top — two seasonal menus, front and back.</p>
+  <section class="hero wrap" aria-labelledby="confirm-title">
+    <div>
+      <p class="eyebrow is-accent">Here you go</p>
+      <h1 id="confirm-title" class="hero-title is-compact">Your menus are ready.</h1>
+      <p class="hero-lede">Print them, stick them inside a cabinet door, and start at the top — two seasonal menus, front and back.</p>
 
-    <div class="confirm-credit">
-      <figure class="avatar">
-        <Image src={portraitImage} width={88} height={88} alt="Portrait of Lauren smiling" loading="eager" />
-      </figure>
-      <span>Lauren</span>
+      <div class="confirm-credit">
+        <figure class="avatar">
+          <Image src={portraitImage} width={88} height={88} alt="Portrait of Lauren smiling" loading="eager" />
+        </figure>
+        <span>Lauren</span>
+      </div>
+
+      <div class="success-panel is-visible">
+        <p class="form-note">One PDF, both seasons, front and back.</p>
+        <a class="cta-button" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
+      </div>
     </div>
 
-    <div class="success-panel is-visible">
-      <p class="form-note">One PDF, both seasons, front and back.</p>
-      <a class="cta-button" href="/downloads/seasonal-menus-printable.pdf" target="_blank" rel="noopener">Download the printable (PDF)</a>
+    <div class="hero-media">
+      <figure class="photo">
+        <Image src={heroImage} alt="Lauren's family in the garden" loading="eager" />
+      </figure>
     </div>
   </section>
 
