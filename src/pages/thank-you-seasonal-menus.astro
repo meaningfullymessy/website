@@ -22,11 +22,23 @@ import portraitLargeImage from '../assets/images/portrait-large.jpg';
       </div>
     </div>
     <div class="hero-media">
-      <figure class="photo">
-        <Image src={portraitLargeImage} alt="Portrait of Lauren smiling in her garden" loading="eager" fetchpriority="high" />
+      <figure class="photo is-square" aria-label="A printed menu card, for the seasonal menu">
+        <svg viewBox="0 0 1040 1040" role="img" aria-hidden="true">
+          <rect width="1040" height="1040" fill="var(--forest)" />
+          <rect x="160" y="175" width="720" height="490" fill="var(--olive)" stroke="var(--sage-400)" stroke-opacity="0.3" stroke-width="2" />
+          <path d="M770,175 L880,175 L880,285 Z" fill="var(--olive-deep)" />
+          <circle cx="520" cy="400" r="55" fill="var(--clay)" />
+          <text x="520" y="418" text-anchor="middle" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="46" fill="var(--chalk)">M</text>
+          <line x1="360" y1="500" x2="680" y2="500" stroke="var(--sage-400)" stroke-opacity="0.45" stroke-width="3" />
+          <line x1="360" y1="545" x2="620" y2="545" stroke="var(--sage-400)" stroke-opacity="0.35" stroke-width="3" />
+          <line x1="360" y1="590" x2="650" y2="590" stroke="var(--sage-400)" stroke-opacity="0.35" stroke-width="3" />
+          <text x="520" y="778" text-anchor="middle" font-family="'Fraunces', Georgia, serif" font-weight="500" font-size="52" fill="var(--chalk)">Meaningfully <tspan font-style="italic" font-weight="400" fill="var(--sage-400)">Messy</tspan></text>
+          <line x1="465" y1="812" x2="575" y2="812" stroke="var(--sage-400)" stroke-opacity="0.5" stroke-width="1.5" />
+          <text x="520" y="858" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="3.5" fill="var(--sage-400)" fill-opacity="0.85">THE SEASONAL MENU</text>
+        </svg>
       </figure>
     </div>
   </section>
 
-  <ShopRecommendations />
+  <ShopRecommendations instagramImage={portraitLargeImage} />
 </Layout>
