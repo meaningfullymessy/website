@@ -919,13 +919,6 @@ button.cta-button:disabled {
   color: var(--olive);
 }
 
-.shop-intro {
-  margin: clamp(40px, 6vw, 64px) auto 0;
-  max-width: 46ch;
-  font-size: 15px;
-  color: var(--stone-700);
-}
-
 .shop-section {
   padding-top: clamp(56px, 7vw, 88px);
 }
