@@ -1,0 +1,47 @@
+---
+// Shared "while you wait" upsell shelf shown on both confirmation pages
+// (thank-you.astro for the newsletter, thank-you-menus.astro for the
+// seasonal-menus lead magnet) — no per-page content, so it's a plain
+// static include rather than a component that takes props.
+
+// One Shop My storefront link for every collection/product CTA below —
+// swap in per-collection or per-product URLs here once they exist.
+const SHOP_URL = 'https://shopmy.us/shop/meaningfullymessy?tab=latest';
+---
+<section class="shop-shelf wrap" aria-labelledby="shop-shelf-title">
+  <p class="shop-shelf-intro" id="shop-shelf-title">While you wait — the things that actually get used in our house.</p>
+
+  <div class="shop-flagship">
+    <span class="card-number">01 · Flagship</span>
+    <h3>Our home systems</h3>
+    <p>The nighttime reset, mornings, laundry, meals — the systems that keep a full house running, all in one place.</p>
+    <a href={SHOP_URL} class="cta-button" target="_blank" rel="noopener noreferrer">Shop the collection →</a>
+  </div>
+
+  <div class="shop-categories">
+    <div class="shop-category">
+      <h3>Homeschool favorites</h3>
+      <p>Room setup, curriculum, read-alouds — the shelf that gets touched every morning.</p>
+      <a href={SHOP_URL} class="cta-button is-small" target="_blank" rel="noopener noreferrer">Shop the collection →</a>
+    </div>
+    <div class="shop-category">
+      <h3>Home favorites</h3>
+      <p>Nothing precious, everything washable — the everyday pieces for a lived-in house.</p>
+      <a href={SHOP_URL} class="cta-button is-small" target="_blank" rel="noopener noreferrer">Shop the collection →</a>
+    </div>
+    <div class="shop-category">
+      <h3>Mom favorites</h3>
+      <p>A few small things, and only because you asked — part of my own reset too.</p>
+      <a href={SHOP_URL} class="cta-button is-small" target="_blank" rel="noopener noreferrer">Shop the collection →</a>
+    </div>
+  </div>
+</section>
+
+<section class="confirm-instagram">
+  <div class="wrap">
+    <p class="quote">Most days, the rhythms show up on Instagram first.</p>
+    <p class="body">Come find me there — I'd love to know which part of your evening feels hardest.</p>
+    <a href="https://www.instagram.com/meaningfullymessy" class="cta-outline" target="_blank" rel="noopener noreferrer">@meaningfullymessy</a>
+    <p class="confirm-affiliate-note">Some links above are affiliate links — I only ever share what's already in our house.</p>
+  </div>
+</section>

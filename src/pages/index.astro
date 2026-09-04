@@ -99,11 +99,6 @@ import portraitLargeImage from '../assets/images/portrait-large.jpg';
           <p class="form-note">One email a week. No spam, unsubscribe anytime.</p>
           <p class="form-note" role="status" aria-live="polite" id="newsletter-status"></p>
         </form>
-
-        <div class="newsletter-success" id="newsletter-success">
-          <p class="eyebrow is-accent">You're in</p>
-          <p>The next weekly note lands in your inbox soon.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -155,8 +150,6 @@ import portraitLargeImage from '../assets/images/portrait-large.jpg';
 <script>
   const form = document.getElementById('newsletter-form') as HTMLFormElement;
   const status = document.getElementById('newsletter-status');
-  const success = document.getElementById('newsletter-success');
-  const intro = document.getElementById('newsletter-intro');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -175,19 +168,19 @@ import portraitLargeImage from '../assets/images/portrait-large.jpg';
 
     // Posts to our own Cloudflare Pages Function (functions/api/subscribe.js),
     // which holds the Kit API key server-side — never in this client code.
+    // The redirect waits for this to settle (success or failure) so it
+    // isn't cancelled mid-flight, but never blocks on Kit actually
+    // succeeding — the visitor always reaches the confirmation page.
     fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, source: 'newsletter' }),
-    }).catch((err) => {
-      console.error('Subscribe request failed:', err);
-    });
-
-    // Not form.hidden — .opt-in-fields sets display:flex in the stylesheet,
-    // which (being author CSS) overrides the browser's default
-    // [hidden] { display: none } regardless of selector specificity.
-    form.style.display = 'none';
-    if (intro) intro.style.display = 'none';
-    if (success) success.classList.add('is-visible');
+    })
+      .catch((err) => {
+        console.error('Subscribe request failed:', err);
+      })
+      .finally(() => {
+        window.location.href = '/thank-you';
+      });
   });
 </script>
