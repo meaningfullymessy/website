@@ -1226,33 +1226,50 @@ button.cta-button:disabled {
   margin: 10px 0 0;
 }
 
-/* Dash-marker list — same shape as .belief-list but with a short rule
-   instead of a checkmark, for a lighter, non-affirmational list (book
-   titles rather than beliefs). */
-.dash-list {
+/* Book list in the reading aside — a small cover next to a linked title,
+   quieter than the shop tiles above (no hover lift/shadow, just a color
+   shift) since this is a personal note, not another shop section. */
+.reading-list {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 15.5px;
+  gap: 14px;
+}
+
+.reading-list a {
+  display: flex;
+  gap: 14px;
+  align-items: center;
   color: var(--brown);
 }
 
-.dash-list li {
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
+.reading-list a:hover .reading-title,
+.reading-list a:focus-visible .reading-title {
+  color: var(--olive);
 }
 
-.dash-list li::before {
-  content: "";
+.reading-cover {
   flex: 0 0 auto;
-  width: 7px;
-  height: 1.5px;
-  background: var(--olive);
-  transform: translateY(-5px);
+  width: 34px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 1px solid var(--stone-300);
+  background: var(--chalk);
+}
+
+.reading-title {
+  display: block;
+  font-size: 15.5px;
+  color: var(--forest);
+}
+
+.reading-author {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--stone-700);
 }
 
 /* Closing Instagram band — same dark-panel treatment as .brand-truth
