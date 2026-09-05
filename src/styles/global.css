@@ -169,6 +169,11 @@ a:focus-visible {
   border-radius: 999px;
   background: var(--olive);
   color: var(--chalk);
+  /* When the nav wraps onto its own line (narrow viewports), this pushes
+     the pill flush right on that line instead of stranding it at the
+     left edge under the text links. No effect on wide viewports, where
+     .site-nav is already content-width with no slack to absorb. */
+  margin-left: auto;
 }
 
 .site-nav a.nav-cta:hover,
