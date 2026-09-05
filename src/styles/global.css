@@ -141,8 +141,8 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px clamp(16px, 3vw, 32px);
-  font-size: 14px;
+  gap: 8px clamp(10px, 3vw, 32px);
+  font-size: clamp(12.5px, 3.4vw, 14px);
   letter-spacing: 0.04em;
 }
 
@@ -165,14 +165,14 @@ a:focus-visible {
 /* Styled as a pill CTA rather than an underline, which in nav UI
    conventionally reads as "current page" — this link leaves the site. */
 .site-nav a.nav-cta {
-  padding: 8px 18px;
+  padding: 8px clamp(12px, 2.5vw, 18px);
   border-radius: 999px;
   background: var(--olive);
   color: var(--chalk);
-  /* When the nav wraps onto its own line (narrow viewports), this pushes
-     the pill flush right on that line instead of stranding it at the
-     left edge under the text links. No effect on wide viewports, where
-     .site-nav is already content-width with no slack to absorb. */
+  /* Fallback for the narrowest screens where the nav still can't fit on
+     one line: keeps the pill flush right on its own wrapped line rather
+     than stranded at the left edge. No effect once the nav fits inline,
+     since .site-nav is then content-width with no slack to absorb. */
   margin-left: auto;
 }
 
